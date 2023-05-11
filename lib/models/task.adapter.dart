@@ -14,8 +14,8 @@ class TaskAdapter extends TypeAdapter<Task> {
     };
     return Task(
       id: fields[0] as String,
-      completed: fields[1] as bool,
-      content: fields[2] as String,
+      title: fields[1] as String,
+      description: fields[2] as String,
     );
   }
 
@@ -26,8 +26,8 @@ class TaskAdapter extends TypeAdapter<Task> {
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.completed)
+      ..write(obj.title)
       ..writeByte(2)
-      ..write(obj.content);
+      ..write(obj.description);
   }
 }

@@ -1,7 +1,7 @@
 class Task {
   final String id;
-  final String title;
-  final String description;
+  String title;
+  String description;
   bool isCompleted = false;
   final DateTime insertedAt = DateTime.now();
 
