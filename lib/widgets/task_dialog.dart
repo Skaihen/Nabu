@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:nabu/generated/l10n.dart';
-import 'package:nabu/themes/custom_ui.dart';
+
+import '../generated/l10n.dart';
+import '../themes/custom_ui.dart';
 
 class TaskDialog extends StatefulWidget {
   const TaskDialog({Key? key}) : super(key: key);

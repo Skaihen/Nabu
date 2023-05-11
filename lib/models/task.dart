@@ -1,13 +1,12 @@
 class Task {
   final String id;
   String title;
-  String description;
-  bool isCompleted = false;
-  final DateTime insertedAt = DateTime.now();
+  bool isCompleted;
+  final DateTime insertedAt;
 
-  Task({
-    required this.id,
-    required this.title,
-    this.description = '',
-  });
+  Task(
+      {required this.id,
+      this.title = '',
+      this.isCompleted = false,
+      required this.insertedAt});
 }

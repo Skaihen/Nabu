@@ -25,9 +25,8 @@ class TasksService with ListenableServiceMixin {
 
   void _saveToHive() => Hive.box('tasks').put('tasks', _tasks.value);
 
-  void newTask(String title, {String description = ''}) {
-    _tasks.value.insert(
-        0, Task(id: _randomId(), title: title, description: description));
+  void newTask() {
+    _tasks.value.insert(0, Task(id: _randomId(), insertedAt: DateTime.now()));
     _saveToHive();
     notifyListeners();
   }
@@ -60,17 +59,6 @@ class TasksService with ListenableServiceMixin {
     final index = _tasks.value.indexWhere((task) => task.id == id);
     if (index != -1) {
       _tasks.value[index].title = text;
-      _saveToHive();
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  bool updateTaskDescription(String id, String text) {
-    final index = _tasks.value.indexWhere((task) => task.id == id);
-    if (index != -1) {
-      _tasks.value[index].description = text;
       _saveToHive();
       return true;
     } else {

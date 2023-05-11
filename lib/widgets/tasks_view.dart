@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:nabu/generated/l10n.dart';
-import 'package:nabu/themes/custom_ui.dart';
+
+import '../generated/l10n.dart';
+import '../themes/custom_ui.dart';
 
 class TasksView extends StatefulWidget {
   const TasksView({Key? key}) : super(key: key);
