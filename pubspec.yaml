@@ -8,7 +8,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # followed by an optional build number separated by a +.
 # Both the version and the builder number may be overridden in flutter
 # build by specifying --build-name and --build-number, respectively.
-version: 1.0.0+1
+version: 1.0.0+2
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
@@ -22,7 +22,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: any
-  stacked: ^3.2.3
+  stacked: ^3.2.5
   stacked_services: ^1.0.2
   get_it: ^7.6.0
   hive: ^2.2.3
