@@ -31,6 +31,10 @@ class _TaskDialogState extends State<TaskDialog> {
           padding: EdgeInsets.only(bottom: CustomUI.xSize(3)),
           child: Text(
             l10n.taskDialogTitle,
+            style: TextStyle(
+              fontSize: CustomUI.xSize(4),
+              fontWeight: FontWeight.w800,
+            ),
           )),
       content: SizedBox(
         width: width,
@@ -45,7 +49,9 @@ class _TaskDialogState extends State<TaskDialog> {
                   prefixIcon: const Icon(
                     CupertinoIcons.square_list,
                   ),
-                  border: OutlineInputBorder(),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(CustomUI.xSize(1)),
+                  ),
                 ),
               ),
               SizedBox(height: CustomUI.xSize(2)),
@@ -59,7 +65,9 @@ class _TaskDialogState extends State<TaskDialog> {
                   prefixIcon: const Icon(
                     CupertinoIcons.bubble_left_bubble_right,
                   ),
-                  border: OutlineInputBorder(),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(CustomUI.xSize(1)),
+                  ),
                 ),
               ),
             ],
@@ -68,26 +76,38 @@ class _TaskDialogState extends State<TaskDialog> {
       ),
       actions: [
         ElevatedButton(
-            onPressed: () {
-              Navigator.of(context, rootNavigator: true).pop();
-            },
-            style: ElevatedButton.styleFrom(
+          onPressed: () {
+            Navigator.of(context, rootNavigator: true).pop();
+          },
+          style: ElevatedButton.styleFrom(
               elevation: 2,
-            ),
-            child: Text(
-              l10n.taskDialogCancelButton,
-            )),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(CustomUI.xSize(1)),
+              ),
+              minimumSize: Size(width, CustomUI.xSize(7))),
+          child: Text(l10n.taskDialogCancelButton,
+              style: TextStyle(
+                  fontSize: CustomUI.xSize(2),
+                  overflow: TextOverflow.ellipsis)),
+        ),
         FilledButton(
-            onPressed: () {
-              // final taskTitle = taskTitleController.text;
-              // final taskDescription = taskDescriptionController.text;
-              // _addTasks(taskTitle: taskTitle, taskDescription: taskDescription);
-              Navigator.of(context, rootNavigator: true).pop();
-            },
-            style: ElevatedButton.styleFrom(
+          onPressed: () {
+            // final taskTitle = taskTitleController.text;
+            // final taskDescription = taskDescriptionController.text;
+            // _addTasks(taskTitle: taskTitle, taskDescription: taskDescription);
+            Navigator.of(context, rootNavigator: true).pop();
+          },
+          style: ElevatedButton.styleFrom(
               elevation: 2,
-            ),
-            child: Text(l10n.taskDialogSaveButton)),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(CustomUI.xSize(1)),
+              ),
+              minimumSize: Size(width, CustomUI.xSize(7))),
+          child: Text(l10n.taskDialogSaveButton,
+              style: TextStyle(
+                  fontSize: CustomUI.xSize(2),
+                  overflow: TextOverflow.ellipsis)),
+        ),
       ],
     );
   }
