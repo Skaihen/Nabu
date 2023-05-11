@@ -1,0 +1,23 @@
+{
+    "@@locale": "en",
+    "noTasksToDisplay": "No tasks to display",
+    "@noTasksToDisplay": {
+        "description": "Text shown when no tasks to display in TasksView"
+    },
+    "newTask": "New Task",
+    "@newTask": {
+        "description": "Text shown to creater a new task in TaskDialog"
+    },
+    "title": "title",
+    "@title": {
+        "description": "Text shown on title field in TaskDialog"
+    },
+    "cancel": "Cancel",
+    "@cancel": {
+        "description": "Text shown on cancel button in TaskDialog"
+    },
+    "save": "Save",
+    "@save": {
+        "description": "Text shown on save button in TaskDialog"
+    }
+}
