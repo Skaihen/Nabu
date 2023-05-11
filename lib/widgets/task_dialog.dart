@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nabu/generated/l10n.dart';
 import 'package:nabu/themes/custom_ui.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 class TaskDialog extends StatefulWidget {
   const TaskDialog({Key? key}) : super(key: key);
@@ -12,7 +11,9 @@ class TaskDialog extends StatefulWidget {
 }
 
 class _TaskDialogState extends State<TaskDialog> {
-  final TextEditingController taskNameController = TextEditingController();
+  final TextEditingController taskTitleController = TextEditingController();
+  final TextEditingController taskDescriptionController =
+      TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,7 @@ class _TaskDialogState extends State<TaskDialog> {
       title: Container(
           padding: EdgeInsets.only(bottom: CustomUI.xSize(3)),
           child: Text(
-            l10n.newTask,
+            l10n.taskDialogTitle,
             style: TextStyle(
               fontSize: CustomUI.xSize(4),
               fontWeight: FontWeight.w800,
@@ -41,12 +42,28 @@ class _TaskDialogState extends State<TaskDialog> {
           child: Column(
             children: <Widget>[
               TextFormField(
-                controller: taskNameController,
+                controller: taskTitleController,
                 decoration: InputDecoration(
-                  label: Text(l10n.title,
+                  label: Text(l10n.taskDialogInputTitle,
                       style: TextStyle(overflow: TextOverflow.ellipsis)),
                   prefixIcon: const Icon(
                     CupertinoIcons.square_list,
+                  ),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(CustomUI.xSize(1)),
+                  ),
+                ),
+              ),
+              SizedBox(height: CustomUI.xSize(2)),
+              TextFormField(
+                controller: taskDescriptionController,
+                keyboardType: TextInputType.multiline,
+                maxLines: null,
+                decoration: InputDecoration(
+                  label: Text(l10n.taskDialogInputDescription,
+                      style: TextStyle(overflow: TextOverflow.ellipsis)),
+                  prefixIcon: const Icon(
+                    CupertinoIcons.bubble_left_bubble_right,
                   ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(CustomUI.xSize(1)),
@@ -68,15 +85,16 @@ class _TaskDialogState extends State<TaskDialog> {
                 borderRadius: BorderRadius.circular(CustomUI.xSize(1)),
               ),
               minimumSize: Size(width, CustomUI.xSize(7))),
-          child: Text(l10n.cancel,
+          child: Text(l10n.taskDialogCancelButton,
               style: TextStyle(
                   fontSize: CustomUI.xSize(2),
                   overflow: TextOverflow.ellipsis)),
         ),
         FilledButton(
           onPressed: () {
-            final taskName = taskNameController.text;
-            _addTasks(taskName: taskName);
+            // final taskTitle = taskTitleController.text;
+            // final taskDescription = taskDescriptionController.text;
+            // _addTasks(taskTitle: taskTitle, taskDescription: taskDescription);
             Navigator.of(context, rootNavigator: true).pop();
           },
           style: ElevatedButton.styleFrom(
@@ -85,7 +103,7 @@ class _TaskDialogState extends State<TaskDialog> {
                 borderRadius: BorderRadius.circular(CustomUI.xSize(1)),
               ),
               minimumSize: Size(width, CustomUI.xSize(7))),
-          child: Text(l10n.save,
+          child: Text(l10n.taskDialogSaveButton,
               style: TextStyle(
                   fontSize: CustomUI.xSize(2),
                   overflow: TextOverflow.ellipsis)),
@@ -94,13 +112,16 @@ class _TaskDialogState extends State<TaskDialog> {
     );
   }
 
-  Future _addTasks({
-    required String taskName,
-  }) async {
-    await Supabase.instance.client.from('tasks').insert({
-      "task_name": taskName,
-    });
+  // Future _addTasks({
+  //   required String taskTitle,
+  //   required String taskDescription,
+  // }) async {
+  //   await Supabase.instance.client.from('tasks').insert({
+  //     "task_title": taskTitle,
+  //     "task_description": taskDescription,
+  //   });
 
-    taskNameController.text = '';
-  }
+  //   taskTitleController.text = '';
+  //   taskDescriptionController.text = '';
+  // }
 }

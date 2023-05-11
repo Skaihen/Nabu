@@ -22,11 +22,14 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
-        "newTask": MessageLookupByLibrary.simpleMessage("New Task"),
-        "noTasksToDisplay":
-            MessageLookupByLibrary.simpleMessage("No tasks to display"),
-        "save": MessageLookupByLibrary.simpleMessage("Save"),
-        "title": MessageLookupByLibrary.simpleMessage("title")
+        "taskDialogCancelButton":
+            MessageLookupByLibrary.simpleMessage("Cancel"),
+        "taskDialogInputDescription":
+            MessageLookupByLibrary.simpleMessage("description"),
+        "taskDialogInputTitle": MessageLookupByLibrary.simpleMessage("title"),
+        "taskDialogSaveButton": MessageLookupByLibrary.simpleMessage("Save"),
+        "taskDialogTitle": MessageLookupByLibrary.simpleMessage("New Task"),
+        "tasksViewNoTasksToDisplay":
+            MessageLookupByLibrary.simpleMessage("No tasks to display")
       };
 }

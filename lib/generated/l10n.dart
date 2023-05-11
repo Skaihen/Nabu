@@ -51,50 +51,60 @@ class S {
   }
 
   /// `No tasks to display`
-  String get noTasksToDisplay {
+  String get tasksViewNoTasksToDisplay {
     return Intl.message(
       'No tasks to display',
-      name: 'noTasksToDisplay',
+      name: 'tasksViewNoTasksToDisplay',
       desc: 'Text shown when no tasks to display in TasksView',
       args: [],
     );
   }
 
   /// `New Task`
-  String get newTask {
+  String get taskDialogTitle {
     return Intl.message(
       'New Task',
-      name: 'newTask',
+      name: 'taskDialogTitle',
       desc: 'Text shown to creater a new task in TaskDialog',
       args: [],
     );
   }
 
   /// `title`
-  String get title {
+  String get taskDialogInputTitle {
     return Intl.message(
       'title',
-      name: 'title',
+      name: 'taskDialogInputTitle',
       desc: 'Text shown on title field in TaskDialog',
       args: [],
     );
   }
 
+  /// `description`
+  String get taskDialogInputDescription {
+    return Intl.message(
+      'description',
+      name: 'taskDialogInputDescription',
+      desc: 'Text shown on description field in TaskDialog',
+      args: [],
+    );
+  }
+
   /// `Cancel`
-  String get cancel {
+  String get taskDialogCancelButton {
     return Intl.message(
       'Cancel',
-      name: 'cancel',
+      name: 'taskDialogCancelButton',
       desc: 'Text shown on cancel button in TaskDialog',
       args: [],
     );
   }
 
   /// `Save`
-  String get save {
+  String get taskDialogSaveButton {
     return Intl.message(
       'Save',
-      name: 'save',
+      name: 'taskDialogSaveButton',
       desc: 'Text shown on save button in TaskDialog',
       args: [],
     );

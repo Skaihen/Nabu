@@ -31,7 +31,7 @@ class _TasksViewState extends State<TasksView> {
 
             if (tasks.isEmpty) {
               return Text(
-                l10n.noTasksToDisplay,
+                l10n.tasksViewNoTasksToDisplay,
                 style: TextStyle(
                   fontSize: CustomUI.xSize(4),
                   fontWeight: FontWeight.bold,

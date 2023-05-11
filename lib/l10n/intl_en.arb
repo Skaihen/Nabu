@@ -1,23 +1,27 @@
 {
     "@@locale": "en",
-    "noTasksToDisplay": "No tasks to display",
-    "@noTasksToDisplay": {
+    "tasksViewNoTasksToDisplay": "No tasks to display",
+    "@tasksViewNoTasksToDisplay": {
         "description": "Text shown when no tasks to display in TasksView"
     },
-    "newTask": "New Task",
-    "@newTask": {
+    "taskDialogTitle": "New Task",
+    "@taskDialogTitle": {
         "description": "Text shown to creater a new task in TaskDialog"
     },
-    "title": "title",
-    "@title": {
+    "taskDialogInputTitle": "title",
+    "@taskDialogInputTitle": {
         "description": "Text shown on title field in TaskDialog"
     },
-    "cancel": "Cancel",
-    "@cancel": {
+    "taskDialogInputDescription": "description",
+    "@taskDialogInputDescription": {
+        "description": "Text shown on description field in TaskDialog"
+    },
+    "taskDialogCancelButton": "Cancel",
+    "@taskDialogCancelButton": {
         "description": "Text shown on cancel button in TaskDialog"
     },
-    "save": "Save",
-    "@save": {
+    "taskDialogSaveButton": "Save",
+    "@taskDialogSaveButton": {
         "description": "Text shown on save button in TaskDialog"
     }
 }
