@@ -32,8 +32,7 @@ class _TaskDialogState extends State<TaskDialog> {
           child: Text(
             l10n.taskDialogTitle,
             style: TextStyle(
-              fontSize: CustomUI.xSize(4),
-              fontWeight: FontWeight.w800,
+              fontWeight: FontWeight.bold,
             ),
           )),
       content: SizedBox(
@@ -79,12 +78,7 @@ class _TaskDialogState extends State<TaskDialog> {
           onPressed: () {
             Navigator.of(context, rootNavigator: true).pop();
           },
-          style: ElevatedButton.styleFrom(
-              elevation: 2,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(CustomUI.xSize(1)),
-              ),
-              minimumSize: Size(width, CustomUI.xSize(7))),
+          style: ElevatedButton.styleFrom(elevation: 2),
           child: Text(l10n.taskDialogCancelButton,
               style: TextStyle(
                   fontSize: CustomUI.xSize(2),
@@ -97,12 +91,7 @@ class _TaskDialogState extends State<TaskDialog> {
             // _addTasks(taskTitle: taskTitle, taskDescription: taskDescription);
             Navigator.of(context, rootNavigator: true).pop();
           },
-          style: ElevatedButton.styleFrom(
-              elevation: 2,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(CustomUI.xSize(1)),
-              ),
-              minimumSize: Size(width, CustomUI.xSize(7))),
+          style: ElevatedButton.styleFrom(elevation: 2),
           child: Text(l10n.taskDialogSaveButton,
               style: TextStyle(
                   fontSize: CustomUI.xSize(2),
