@@ -70,20 +70,20 @@ class S {
     );
   }
 
-  /// `title`
+  /// `Title`
   String get taskDialogInputTitle {
     return Intl.message(
-      'title',
+      'Title',
       name: 'taskDialogInputTitle',
       desc: 'Text shown on title field in TaskDialog',
       args: [],
     );
   }
 
-  /// `description`
+  /// `Description`
   String get taskDialogInputDescription {
     return Intl.message(
-      'description',
+      'Description',
       name: 'taskDialogInputDescription',
       desc: 'Text shown on description field in TaskDialog',
       args: [],
@@ -106,6 +106,16 @@ class S {
       'Save',
       name: 'taskDialogSaveButton',
       desc: 'Text shown on save button in TaskDialog',
+      args: [],
+    );
+  }
+
+  /// `No tasks yet. Click + to add a new one.`
+  String get noTasksYet {
+    return Intl.message(
+      'No tasks yet. Click + to add a new one.',
+      name: 'noTasksYet',
+      desc: 'Text shown when there are no tasks to display in HomeScreen',
       args: [],
     );
   }

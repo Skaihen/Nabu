@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../generated/l10n.dart';
-import '../themes/custom_ui.dart';
+import '../../generated/l10n.dart';
+import '../../themes/custom_ui.dart';
 
 class TaskDialog extends StatefulWidget {
   const TaskDialog({Key? key}) : super(key: key);
@@ -13,8 +13,6 @@ class TaskDialog extends StatefulWidget {
 
 class _TaskDialogState extends State<TaskDialog> {
   final TextEditingController taskTitleController = TextEditingController();
-  final TextEditingController taskDescriptionController =
-      TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -44,26 +42,9 @@ class _TaskDialogState extends State<TaskDialog> {
               TextFormField(
                 controller: taskTitleController,
                 decoration: InputDecoration(
-                  label: Text(l10n.taskDialogInputTitle,
-                      style: TextStyle(overflow: TextOverflow.ellipsis)),
+                  hintText: l10n.taskDialogInputTitle,
                   prefixIcon: const Icon(
                     CupertinoIcons.square_list,
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(CustomUI.xSize(1)),
-                  ),
-                ),
-              ),
-              SizedBox(height: CustomUI.xSize(2)),
-              TextFormField(
-                controller: taskDescriptionController,
-                keyboardType: TextInputType.multiline,
-                maxLines: null,
-                decoration: InputDecoration(
-                  label: Text(l10n.taskDialogInputDescription,
-                      style: TextStyle(overflow: TextOverflow.ellipsis)),
-                  prefixIcon: const Icon(
-                    CupertinoIcons.bubble_left_bubble_right,
                   ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(CustomUI.xSize(1)),

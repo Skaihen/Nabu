@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
+import '../../generated/l10n.dart';
 import 'home_screen_viewmodel.dart';
+import 'task_dialog.dart';
 
 class HomeScreenView extends StatelessWidget {
   const HomeScreenView({Key? key}) : super(key: key);
@@ -19,11 +21,11 @@ class HomeScreenView extends StatelessWidget {
               Opacity(
                 opacity: 0.5,
                 child: Column(
-                  children: const [
+                  children: [
                     SizedBox(height: 64),
                     Icon(Icons.emoji_food_beverage_outlined, size: 48),
                     SizedBox(height: 16),
-                    Text('No tasks yet. Click + to add a new one.'),
+                    Text(S.of(context).noTasksYet),
                   ],
                 ),
               ),
@@ -57,7 +59,11 @@ class HomeScreenView extends StatelessWidget {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            model.newTask();
+            showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return const TaskDialog();
+                });
           },
           child: const Icon(Icons.add),
         ),

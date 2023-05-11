@@ -3,27 +3,27 @@ import 'package:flutter/material.dart';
 class BlueLightTheme {
   BlueLightTheme._();
 
-  static const Color verdigris = Color(0xFF34A0A4);
+  static const Color jade = Color(0xFF00B267);
   static const Color bondiBlue = Color(0xFF168AAD);
   static const Color auburn = Color(0xFFA43834);
-  static const Color white = Color(0xFFFAFDFC);
-  static const Color richBlack = Color(0xFF040F14);
+  static const Color azureWeb = Color(0xFFFFFFFF);
+  static const Color richBlack = Color(0xFF2C2C2C);
 
   static ThemeData get light {
     return ThemeData(
         colorScheme: const ColorScheme.light(
-          primary: verdigris,
-          onPrimary: white,
+          primary: jade,
+          onPrimary: azureWeb,
           secondary: auburn,
           onSecondary: richBlack,
           tertiary: bondiBlue,
-          onTertiary: white,
-          background: white,
+          onTertiary: azureWeb,
+          background: azureWeb,
           onBackground: richBlack,
-          tertiaryContainer: white,
+          tertiaryContainer: azureWeb,
           onTertiaryContainer: richBlack,
-          surface: white,
-          surfaceTint: white,
+          surface: azureWeb,
+          surfaceTint: azureWeb,
           onSurface: richBlack,
           shadow: richBlack,
         ),
@@ -34,18 +34,18 @@ class BlueLightTheme {
     return ThemeData(
         colorScheme: const ColorScheme.dark(
           brightness: Brightness.dark,
-          primary: verdigris,
-          onPrimary: white,
+          primary: jade,
+          onPrimary: azureWeb,
           secondary: auburn,
           onSecondary: richBlack,
           background: richBlack,
-          onBackground: white,
+          onBackground: azureWeb,
           tertiaryContainer: richBlack,
-          onTertiaryContainer: white,
+          onTertiaryContainer: azureWeb,
           surface: richBlack,
           surfaceTint: richBlack,
-          onSurface: white,
-          shadow: white,
+          onSurface: azureWeb,
+          shadow: azureWeb,
         ),
         useMaterial3: true);
   }
