@@ -37,7 +37,7 @@ class BlueLightTheme {
           actionsPadding: EdgeInsets.all(CustomUI.xSize(3)),
         ),
         inputDecorationTheme: InputDecorationTheme(
-          filled: true,
+          isDense: true,
           border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(
                 CustomUI.xSize(1),
@@ -80,7 +80,7 @@ class BlueLightTheme {
           actionsPadding: EdgeInsets.all(CustomUI.xSize(3)),
         ),
         inputDecorationTheme: InputDecorationTheme(
-          filled: true,
+          isDense: true,
           border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(
                 CustomUI.xSize(1),

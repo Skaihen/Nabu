@@ -1,8 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../generated/l10n.dart';
 import '../../themes/custom_ui.dart';
+import '../../widgets/custom_text_form_field.dart';
 
 class TaskDialog extends StatefulWidget {
   const TaskDialog({Key? key}) : super(key: key);
@@ -38,20 +38,7 @@ class _TaskDialogState extends State<TaskDialog> {
             children: <Widget>[
               Text(l10n.taskDialogInputTitle,
                   style: TextStyle(fontWeight: FontWeight.bold)),
-              Container(
-                decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      offset: Offset(0, 5),
-                      blurRadius: 10.0,
-                      color: Colors.black.withOpacity(0.5),
-                    ),
-                  ],
-                ),
-                child: TextFormField(
-                  controller: taskTitleController,
-                ),
-              )
+              CustomTextFormField(taskTitleController: taskTitleController),
             ],
           ),
         ),
