@@ -20,10 +20,6 @@ class _TaskDialogState extends State<TaskDialog> {
     final l10n = S.of(context);
 
     return AlertDialog(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(CustomUI.xSize(1)),
-      ),
-      actionsPadding: EdgeInsets.all(CustomUI.xSize(3)),
       actionsOverflowButtonSpacing: CustomUI.xSize(2),
       scrollable: true,
       title: Container(
@@ -38,19 +34,24 @@ class _TaskDialogState extends State<TaskDialog> {
         width: width,
         child: Form(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              TextFormField(
-                controller: taskTitleController,
-                decoration: InputDecoration(
-                  hintText: l10n.taskDialogInputTitle,
-                  prefixIcon: const Icon(
-                    CupertinoIcons.square_list,
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(CustomUI.xSize(1)),
-                  ),
+              Text(l10n.taskDialogInputTitle,
+                  style: TextStyle(fontWeight: FontWeight.bold)),
+              Container(
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      offset: Offset(0, 5),
+                      blurRadius: 10.0,
+                      color: Colors.black.withOpacity(0.5),
+                    ),
+                  ],
                 ),
-              ),
+                child: TextFormField(
+                  controller: taskTitleController,
+                ),
+              )
             ],
           ),
         ),
