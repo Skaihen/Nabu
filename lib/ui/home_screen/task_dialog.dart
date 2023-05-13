@@ -38,6 +38,7 @@ class _TaskDialogState extends State<TaskDialog> {
             children: <Widget>[
               Text(l10n.taskDialogInputTitle,
                   style: TextStyle(fontWeight: FontWeight.bold)),
+              SizedBox(height: CustomUI.xSize(2)),
               CustomTextFormField(taskTitleController: taskTitleController),
             ],
           ),
