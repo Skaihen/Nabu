@@ -22,13 +22,10 @@ class _TaskDialogState extends State<TaskDialog> {
     return AlertDialog(
       actionsOverflowButtonSpacing: CustomUI.xSize(2),
       scrollable: true,
-      title: Container(
-          padding: EdgeInsets.only(bottom: CustomUI.xSize(3)),
-          child: Text(
-            l10n.taskDialogTitle,
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
+      title: SizedBox(
+          height: 90,
+          child: Container(
+            color: Colors.black,
           )),
       content: SizedBox(
         width: width,
@@ -38,7 +35,7 @@ class _TaskDialogState extends State<TaskDialog> {
             children: <Widget>[
               Text(l10n.taskDialogInputTitle,
                   style: TextStyle(fontWeight: FontWeight.bold)),
-              SizedBox(height: CustomUI.xSize(2)),
+              SizedBox(height: CustomUI.xSize(1)),
               CustomTextFormField(taskTitleController: taskTitleController),
             ],
           ),
