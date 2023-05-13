@@ -19,53 +19,65 @@ class _TaskDialogState extends State<TaskDialog> {
     double width = MediaQuery.of(context).size.width;
     final l10n = S.of(context);
 
-    return AlertDialog(
-      actionsOverflowButtonSpacing: CustomUI.xSize(2),
-      scrollable: true,
-      title: SizedBox(
-          height: 90,
-          child: Container(
-            color: Colors.black,
-          )),
-      content: SizedBox(
-        width: width,
-        child: Form(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(l10n.taskDialogInputTitle,
-                  style: TextStyle(fontWeight: FontWeight.bold)),
-              SizedBox(height: CustomUI.xSize(1)),
-              CustomTextFormField(taskTitleController: taskTitleController),
-            ],
+    return Center(
+      child: Stack(alignment: Alignment.topCenter, children: [
+        Container(
+            color: Colors.green,
+            height: CustomUI.xSize(51),
+            width: width,
+            child: AlertDialog(
+              scrollable: true,
+              actionsOverflowButtonSpacing: CustomUI.xSize(2),
+              title: SizedBox(height: CustomUI.xSize(6)),
+              content: SizedBox(
+                width: width,
+                child: Form(
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                      Text(l10n.taskDialogInputTitle,
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                      SizedBox(height: CustomUI.xSize(1)),
+                      CustomTextFormField(
+                          taskTitleController: taskTitleController)
+                    ])),
+              ),
+              actions: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context, rootNavigator: true).pop();
+                  },
+                  style: ElevatedButton.styleFrom(elevation: 2),
+                  child: Text(l10n.taskDialogCancelButton,
+                      style: TextStyle(
+                          fontSize: CustomUI.xSize(2),
+                          overflow: TextOverflow.ellipsis)),
+                ),
+                FilledButton(
+                  onPressed: () {
+                    // final taskTitle = taskTitleController.text;
+                    // final taskDescription = taskDescriptionController.text;
+                    // _addTasks(taskTitle: taskTitle, taskDescription: taskDescription);
+                    Navigator.of(context, rootNavigator: true).pop();
+                  },
+                  style: ElevatedButton.styleFrom(elevation: 2),
+                  child: Text(l10n.taskDialogSaveButton,
+                      style: TextStyle(
+                          fontSize: CustomUI.xSize(2),
+                          overflow: TextOverflow.ellipsis)),
+                ),
+              ],
+            )),
+        Container(
+          height: 100,
+          width: width * 0.66,
+          decoration: BoxDecoration(
+            color: Colors.red,
+            borderRadius: BorderRadius.circular(CustomUI.xSize(2)),
           ),
         ),
-      ),
-      actions: [
-        ElevatedButton(
-          onPressed: () {
-            Navigator.of(context, rootNavigator: true).pop();
-          },
-          style: ElevatedButton.styleFrom(elevation: 2),
-          child: Text(l10n.taskDialogCancelButton,
-              style: TextStyle(
-                  fontSize: CustomUI.xSize(2),
-                  overflow: TextOverflow.ellipsis)),
-        ),
-        FilledButton(
-          onPressed: () {
-            // final taskTitle = taskTitleController.text;
-            // final taskDescription = taskDescriptionController.text;
-            // _addTasks(taskTitle: taskTitle, taskDescription: taskDescription);
-            Navigator.of(context, rootNavigator: true).pop();
-          },
-          style: ElevatedButton.styleFrom(elevation: 2),
-          child: Text(l10n.taskDialogSaveButton,
-              style: TextStyle(
-                  fontSize: CustomUI.xSize(2),
-                  overflow: TextOverflow.ellipsis)),
-        ),
-      ],
+      ]),
     );
   }
 
