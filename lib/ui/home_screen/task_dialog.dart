@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../generated/l10n.dart';
 import '../../themes/custom_ui.dart';
+import '../../widgets/custom_plain_text_form_field.dart';
 import '../../widgets/custom_text_form_field.dart';
 
 class TaskDialog extends StatefulWidget {
@@ -32,35 +33,27 @@ class _TaskDialogState extends State<TaskDialog> {
               content: SizedBox(
                 width: width,
                 child: Form(
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                      TextFormField(
-                        onChanged: (String value) {
-                          setState(() {
-                            placeholderTileTitleText = value;
-                          });
-                        },
-                        controller: taskTitleController,
-                        decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.short_text),
-                          prefixIconColor:
-                              Theme.of(context).hintColor.withOpacity(0.4),
-                          filled: true,
-                          fillColor: Colors.grey.shade100,
-                          hintText: l10n.taskDialogInputTitle,
-                          hintStyle: TextStyle(
-                              color:
-                                  Theme.of(context).hintColor.withOpacity(0.3)),
-                        ),
-                      ),
-                      SizedBox(height: CustomUI.xSize(2)),
-                      Text(l10n.taskDialogInputTitle,
-                          style: TextStyle(fontWeight: FontWeight.bold)),
-                      SizedBox(height: CustomUI.xSize(1)),
-                      CustomTextFormField(
-                          taskTitleController: taskTitleController)
-                    ])),
+                    child: Column(children: [
+                  CustomPlainTextFormField(
+                    formHint: l10n.taskDialogInputTitle,
+                    taskTitleController: taskTitleController,
+                    onChanged: (String value) {
+                      setState(() {
+                        placeholderTileTitleText = value;
+                      });
+                    },
+                  ),
+                  SizedBox(height: CustomUI.xSize(2)),
+                  CustomTextFormField(
+                    formLabel: l10n.taskDialogInputTitle,
+                    taskTitleController: taskTitleController,
+                    onChanged: (String value) {
+                      setState(() {
+                        placeholderTileTitleText = value;
+                      });
+                    },
+                  )
+                ])),
               ),
               actions: [
                 ElevatedButton(
