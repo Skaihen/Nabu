@@ -23,7 +23,7 @@ class _TaskDialogState extends State<TaskDialog> {
       child: Stack(alignment: Alignment.topCenter, children: [
         Container(
             color: Colors.green,
-            height: CustomUI.xSize(51),
+            height: CustomUI.xSize(60),
             width: width,
             child: AlertDialog(
               scrollable: true,
@@ -34,8 +34,22 @@ class _TaskDialogState extends State<TaskDialog> {
                 child: Form(
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.min,
                         children: [
+                      TextFormField(
+                        controller: taskTitleController,
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.short_text),
+                          prefixIconColor:
+                              Theme.of(context).hintColor.withOpacity(0.4),
+                          filled: true,
+                          fillColor: Colors.grey.shade100,
+                          hintText: l10n.taskDialogInputTitle,
+                          hintStyle: TextStyle(
+                              color:
+                                  Theme.of(context).hintColor.withOpacity(0.3)),
+                        ),
+                      ),
+                      SizedBox(height: CustomUI.xSize(2)),
                       Text(l10n.taskDialogInputTitle,
                           style: TextStyle(fontWeight: FontWeight.bold)),
                       SizedBox(height: CustomUI.xSize(1)),
