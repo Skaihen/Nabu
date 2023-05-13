@@ -13,6 +13,7 @@ class TaskDialog extends StatefulWidget {
 
 class _TaskDialogState extends State<TaskDialog> {
   final TextEditingController taskTitleController = TextEditingController();
+  String placeholderTileTitleText = '• • •';
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +22,7 @@ class _TaskDialogState extends State<TaskDialog> {
 
     return Center(
       child: Stack(alignment: Alignment.topCenter, children: [
-        Container(
-            color: Colors.green,
+        SizedBox(
             height: CustomUI.xSize(60),
             width: width,
             child: AlertDialog(
@@ -36,6 +36,11 @@ class _TaskDialogState extends State<TaskDialog> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                       TextFormField(
+                        onChanged: (String value) {
+                          setState(() {
+                            placeholderTileTitleText = value;
+                          });
+                        },
                         controller: taskTitleController,
                         decoration: InputDecoration(
                           prefixIcon: Icon(Icons.short_text),
@@ -83,12 +88,23 @@ class _TaskDialogState extends State<TaskDialog> {
                 ),
               ],
             )),
-        Container(
-          height: 100,
-          width: width * 0.66,
-          decoration: BoxDecoration(
-            color: Colors.red,
-            borderRadius: BorderRadius.circular(CustomUI.xSize(2)),
+        Material(
+          elevation: 3,
+          color: Colors.transparent,
+          borderRadius: BorderRadius.circular(CustomUI.xSize(2)),
+          child: Container(
+            height: 100,
+            width: width * 0.66,
+            decoration: BoxDecoration(
+              color: Colors.lightBlue.shade400.withOpacity(0.9),
+              borderRadius: BorderRadius.circular(CustomUI.xSize(2)),
+            ),
+            child: ListTile(
+              title: Text(placeholderTileTitleText),
+              titleTextStyle: TextStyle(
+                  fontSize: CustomUI.xSize(3),
+                  color: Theme.of(context).colorScheme.background),
+            ),
           ),
         ),
       ]),
