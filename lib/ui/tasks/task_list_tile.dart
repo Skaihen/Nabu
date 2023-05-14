@@ -8,14 +8,14 @@ class CustomTaskListTile extends StatelessWidget {
       required this.placeholderTileTitleText,
       required this.width,
       required this.isCompleted,
-      required this.trailIconButtonOnPressed,
-      required this.toggleCompletedButtonOnChanged});
+      required this.toggleCompletedButtonOnChanged,
+      required this.trailIconButtonOnPressed});
 
   final String placeholderTileTitleText;
   final double width;
   final bool isCompleted;
-  final VoidCallback trailIconButtonOnPressed;
   final ValueChanged<bool?> toggleCompletedButtonOnChanged;
+  final VoidCallback trailIconButtonOnPressed;
 
   @override
   Widget build(BuildContext context) {
