@@ -3,7 +3,7 @@ import 'package:stacked/stacked.dart';
 
 import '../../generated/l10n.dart';
 import 'home_screen_viewmodel.dart';
-import 'task_dialog.dart';
+import '../tasks/dialog/task_dialog.dart';
 
 class HomeScreenView extends StatelessWidget {
   const HomeScreenView({Key? key}) : super(key: key);

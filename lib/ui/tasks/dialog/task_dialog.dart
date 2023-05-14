@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../generated/l10n.dart';
-import '../../themes/custom_ui.dart';
-import '../../widgets/custom_plain_text_form_field.dart';
-import '../../widgets/custom_text_form_field.dart';
+import '../../../generated/l10n.dart';
+import '../../../themes/custom_ui.dart';
+import '../task_list_tile.dart';
+import 'custom_text_form_field.dart';
 
 class TaskDialog extends StatefulWidget {
   const TaskDialog({Key? key}) : super(key: key);
@@ -24,7 +24,7 @@ class _TaskDialogState extends State<TaskDialog> {
     return Center(
       child: Stack(alignment: Alignment.topCenter, children: [
         SizedBox(
-            height: CustomUI.xSize(60),
+            height: CustomUI.xSize(49),
             width: width,
             child: AlertDialog(
               scrollable: true,
@@ -34,25 +34,17 @@ class _TaskDialogState extends State<TaskDialog> {
                 width: width,
                 child: Form(
                     child: Column(children: [
-                  CustomPlainTextFormField(
-                    formHint: l10n.taskDialogInputTitle,
-                    taskTitleController: taskTitleController,
-                    onChanged: (String value) {
-                      setState(() {
-                        placeholderTileTitleText = value;
-                      });
-                    },
-                  ),
-                  SizedBox(height: CustomUI.xSize(2)),
                   CustomTextFormField(
                     formLabel: l10n.taskDialogInputTitle,
                     taskTitleController: taskTitleController,
                     onChanged: (String value) {
                       setState(() {
-                        placeholderTileTitleText = value;
+                        value.isEmpty
+                            ? placeholderTileTitleText = '• • •'
+                            : placeholderTileTitleText = value;
                       });
                     },
-                  )
+                  ),
                 ])),
               ),
               actions: [
@@ -81,25 +73,13 @@ class _TaskDialogState extends State<TaskDialog> {
                 ),
               ],
             )),
-        Material(
-          elevation: 3,
-          color: Colors.transparent,
-          borderRadius: BorderRadius.circular(CustomUI.xSize(2)),
-          child: Container(
-            height: 100,
-            width: width * 0.66,
-            decoration: BoxDecoration(
-              color: Colors.lightBlue.shade400.withOpacity(0.9),
-              borderRadius: BorderRadius.circular(CustomUI.xSize(2)),
-            ),
-            child: ListTile(
-              title: Text(placeholderTileTitleText),
-              titleTextStyle: TextStyle(
-                  fontSize: CustomUI.xSize(3),
-                  color: Theme.of(context).colorScheme.background),
-            ),
-          ),
-        ),
+        CustomTaskListTile(
+          placeholderTileTitleText: placeholderTileTitleText,
+          width: width * 0.66,
+          isCompleted: false,
+          trailIconButtonOnPressed: () {},
+          toggleCompletedButtonOnChanged: (bool? value) {},
+        )
       ]),
     );
   }
