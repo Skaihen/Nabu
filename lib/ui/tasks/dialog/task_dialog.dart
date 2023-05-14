@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../generated/l10n.dart';
 import '../../../themes/custom_ui.dart';
-import '../task_list_tile.dart';
 import 'custom_text_form_field.dart';
 
 class TaskDialog extends StatefulWidget {
@@ -73,13 +72,13 @@ class _TaskDialogState extends State<TaskDialog> {
                 ),
               ],
             )),
-        CustomTaskListTile(
-          placeholderTileTitleText: placeholderTileTitleText,
-          width: width * 0.66,
-          isCompleted: false,
-          trailIconButtonOnPressed: () {},
-          toggleCompletedButtonOnChanged: (bool? value) {},
-        )
+        // CustomTaskListTile(
+        //   placeholderTileTitleText: placeholderTileTitleText,
+        //   width: width * 0.66,
+        //   isCompleted: false,
+        //   trailIconButtonOnPressed: () {},
+        //   toggleCompletedButtonOnChanged: (bool? value) {},
+        // )
       ]),
     );
   }

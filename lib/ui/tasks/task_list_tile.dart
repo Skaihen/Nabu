@@ -5,15 +5,19 @@ import '../../themes/custom_ui.dart';
 class CustomTaskListTile extends StatelessWidget {
   const CustomTaskListTile(
       {super.key,
-      required this.placeholderTileTitleText,
       required this.width,
+      required this.tileTitleText,
+      required this.tileFocusNode,
       required this.isCompleted,
+      required this.updateTaskTitle,
       required this.toggleCompletedButtonOnChanged,
       required this.trailIconButtonOnPressed});
 
-  final String placeholderTileTitleText;
   final double width;
+  final String tileTitleText;
+  final FocusNode? tileFocusNode;
   final bool isCompleted;
+  final ValueChanged<String> updateTaskTitle;
   final ValueChanged<bool?> toggleCompletedButtonOnChanged;
   final VoidCallback trailIconButtonOnPressed;
 
@@ -56,16 +60,24 @@ class CustomTaskListTile extends StatelessWidget {
               contentPadding: EdgeInsets.symmetric(
                 horizontal: CustomUI.xSize(1),
               ),
-              title: Text(placeholderTileTitleText),
-              titleTextStyle: TextStyle(
-                  fontSize: CustomUI.xSize(3),
-                  color: Theme.of(context).colorScheme.background,
-                  decoration: isCompleted ? TextDecoration.lineThrough : null),
+              title: TextField(
+                controller: TextEditingController(text: tileTitleText),
+                decoration: null,
+                focusNode: tileFocusNode,
+                onChanged: updateTaskTitle,
+                cursorColor: Theme.of(context).colorScheme.background,
+                style: TextStyle(
+                    fontSize: CustomUI.xSize(3),
+                    color: Theme.of(context).colorScheme.background,
+                    decoration:
+                        isCompleted ? TextDecoration.lineThrough : null),
+              ),
               leading: Checkbox(
                 value: isCompleted,
                 onChanged: toggleCompletedButtonOnChanged,
                 fillColor: MaterialStateProperty.all(
                     Theme.of(context).colorScheme.background),
+                checkColor: Colors.lightBlue.shade400.withOpacity(0.9),
               ),
               trailing: IconButton(
                 icon: const Icon(Icons.horizontal_rule),
