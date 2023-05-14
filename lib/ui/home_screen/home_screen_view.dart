@@ -33,31 +33,44 @@ class HomeScreenView extends StatelessWidget {
                 ),
               ),
             ...model.tasks.map((task) {
-              return CustomTaskListTile(
-                placeholderTileTitleText: task.title,
-                width: width * 0.8,
-                isCompleted: task.isCompleted,
-                toggleCompletedButtonOnChanged: (bool? toggle) =>
-                    model.toggleStatus(task.id),
-                trailIconButtonOnPressed: () => model.removeTask(task.id),
-              );
+              return ListTile(
+                  leading: IconButton(
+                    icon: Icon(
+                      task.isCompleted ? Icons.task_alt : Icons.circle_outlined,
+                    ),
+                    onPressed: () => model.toggleStatus(task.id),
+                  ),
+                  title: TextField(
+                    controller: TextEditingController(text: task.title),
+                    decoration: null,
+                    focusNode: model.getFocusNode(task.id),
+                    maxLines: null,
+                    onChanged: (text) => model.updateTaskTitle(task.id, text),
+                    style: TextStyle(
+                      fontSize: 20,
+                      decoration:
+                          task.isCompleted ? TextDecoration.lineThrough : null,
+                    ),
+                  ),
+                  trailing: IconButton(
+                    icon: const Icon(Icons.horizontal_rule),
+                    onPressed: () => model.removeTask(task.id),
+                  ));
 
-              //   title: TextField(
-              //     controller: TextEditingController(text: task.title),
-              //     decoration: null,
-              //     focusNode: model.getFocusNode(task.id),
-              //     maxLines: null,
-              //     onChanged: (text) => model.updateTaskTitle(task.id, text),
+              // return CustomTaskListTile(
+              //   placeholderTileTitleText: task.title,
+              //   width: width * 0.8,
+              //   isCompleted: task.isCompleted,
+              //   toggleCompletedButtonOnChanged: (bool? toggle) =>
+              //       model.toggleStatus(task.id),
+              //   trailIconButtonOnPressed: () => model.removeTask(task.id),
+              // );
             }),
           ],
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return const TaskDialog();
-                });
+            model.newTask();
           },
           child: const Icon(Icons.add),
         ),
