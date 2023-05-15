@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../generated/l10n.dart';
 import '../../../themes/custom_ui.dart';
+import '../mockup_task_list_tile.dart';
 import 'custom_text_form_field.dart';
 
 class TaskDialog extends StatefulWidget {
@@ -23,12 +24,12 @@ class _TaskDialogState extends State<TaskDialog> {
     return Center(
       child: Stack(alignment: Alignment.topCenter, children: [
         SizedBox(
-            height: CustomUI.xSize(49),
+            height: CustomUI.xSize(47),
             width: width,
             child: AlertDialog(
               scrollable: true,
               actionsOverflowButtonSpacing: CustomUI.xSize(2),
-              title: SizedBox(height: CustomUI.xSize(6)),
+              title: SizedBox(height: CustomUI.xSize(4)),
               content: SizedBox(
                 width: width,
                 child: Form(
@@ -72,13 +73,10 @@ class _TaskDialogState extends State<TaskDialog> {
                 ),
               ],
             )),
-        // CustomTaskListTile(
-        //   placeholderTileTitleText: placeholderTileTitleText,
-        //   width: width * 0.66,
-        //   isCompleted: false,
-        //   trailIconButtonOnPressed: () {},
-        //   toggleCompletedButtonOnChanged: (bool? value) {},
-        // )
+        MockupTaskListTile(
+          width: width * 0.66,
+          tileTitleText: placeholderTileTitleText,
+        )
       ]),
     );
   }

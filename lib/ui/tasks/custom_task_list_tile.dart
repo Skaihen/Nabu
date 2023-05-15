@@ -29,7 +29,7 @@ class CustomTaskListTile extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: CustomUI.xSize(1)),
       child: Material(
           clipBehavior: Clip.antiAlias,
-          elevation: 3,
+          elevation: 2,
           color: Colors.transparent,
           borderRadius: BorderRadius.circular(CustomUI.xSize(2)),
           child: Container(
@@ -39,7 +39,9 @@ class CustomTaskListTile extends StatelessWidget {
               color: isCompleted ? Colors.lightBlue.shade200 : Colors.lightBlue,
               borderRadius: BorderRadius.circular(CustomUI.xSize(2)),
             ),
+            padding: EdgeInsets.only(bottom: CustomUI.xSize(2)),
             child: ListTile(
+              titleAlignment: ListTileTitleAlignment.top,
               iconColor: Theme.of(context).colorScheme.background,
               contentPadding: EdgeInsets.symmetric(
                 horizontal: CustomUI.xSize(1),
@@ -47,6 +49,8 @@ class CustomTaskListTile extends StatelessWidget {
               onTap: toggleCompletedButtonOnChanged,
               title: TextField(
                 controller: TextEditingController(text: tileTitleText),
+                expands: true,
+                maxLines: null,
                 decoration: null,
                 focusNode: tileFocusNode,
                 onChanged: updateTaskTitle,

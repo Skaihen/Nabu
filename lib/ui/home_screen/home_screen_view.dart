@@ -3,7 +3,8 @@ import 'package:stacked/stacked.dart';
 
 import '../../generated/l10n.dart';
 import '../../themes/custom_ui.dart';
-import '../tasks/task_list_tile.dart';
+import '../tasks/dialog/task_dialog.dart';
+import '../tasks/custom_task_list_tile.dart';
 import 'home_screen_viewmodel.dart';
 
 class HomeScreenView extends StatelessWidget {
@@ -60,7 +61,11 @@ class HomeScreenView extends StatelessWidget {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            model.newTask();
+            showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return const TaskDialog();
+                });
           },
           child: const Icon(Icons.add),
         ),
