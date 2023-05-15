@@ -93,10 +93,10 @@ packages:
     dependency: "direct dev"
     description:
       name: build_runner
-      sha256: "87e06c939450b9b94e3e1bb2d46e0e9780adbff5500d3969f2ba2de6bbb860cb"
+      sha256: "220ae4553e50d7c21a17c051afc7b183d28a24a420502e842f303f8e4e6edced"
       url: "https://pub.dev"
     source: hosted
-    version: "2.4.2"
+    version: "2.4.4"
   build_runner_core:
     dependency: transitive
     description:
@@ -289,10 +289,10 @@ packages:
     dependency: transitive
     description:
       name: functions_client
-      sha256: "7c3b9145822ade265750bc1c01ea99ceceb52922e94c0e4c996ce9f7e920966e"
+      sha256: "26059c5fb000ffd0986ae3144d43c2a6f54931610fd61c2584e18e308c7eaa52"
       url: "https://pub.dev"
     source: hosted
-    version: "1.2.0"
+    version: "1.2.1"
   get:
     dependency: transitive
     description:
@@ -321,10 +321,10 @@ packages:
     dependency: transitive
     description:
       name: gotrue
-      sha256: "2ef08ec2d03c7a8921dd3b9493ee7eac1c33d554abb0689b725728e332e2ff37"
+      sha256: c08f5ac76dcae2dd06cc7f8e80a8ede12c66454fef06caac3b191c8c7a603811
       url: "https://pub.dev"
     source: hosted
-    version: "1.7.0"
+    version: "1.7.1"
   graphs:
     dependency: transitive
     description:
@@ -601,10 +601,10 @@ packages:
     dependency: transitive
     description:
       name: postgrest
-      sha256: b6c2d1b58e648bdf1e6c775a90064ae1c505879b439c30028cfc5072969e8601
+      sha256: "7b91eb7b40621d07aaae687f47f3032f30e1b86a9ccebfcfca52d001223f8b6e"
       url: "https://pub.dev"
     source: hosted
-    version: "1.2.3"
+    version: "1.2.4"
   process:
     dependency: transitive
     description:
@@ -641,10 +641,10 @@ packages:
     dependency: transitive
     description:
       name: realtime_client
-      sha256: "467ef702a35858004a1b9c475dc0ebc0b858ade758e99295beda7f101d523198"
+      sha256: "0f2614f72e5639ddd7abc3dede336f23554f9f744d0b064d41009f9ca94a53d2"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.3"
+    version: "1.0.4"
   recase:
     dependency: transitive
     description:
@@ -830,10 +830,10 @@ packages:
     dependency: transitive
     description:
       name: storage_client
-      sha256: f630b4d64c5467a41e2a157eddd8c4a2c8a629c19485c1694856986ba4cb091e
+      sha256: "4ed4dc8a990d178c96962319d6d8c267c3e206fca2c2b98660bad6e001220ffc"
       url: "https://pub.dev"
     source: hosted
-    version: "1.3.0"
+    version: "1.3.1"
   stream_channel:
     dependency: transitive
     description:
@@ -862,18 +862,18 @@ packages:
     dependency: transitive
     description:
       name: supabase
-      sha256: b94ee48ea402e708012131bb75dccf4efa90400d41883da9f0999c67731094d1
+      sha256: "403739cdfea48ba633450e5b191ceeaae81ac10ec89166c0e109235b3e1532f3"
       url: "https://pub.dev"
     source: hosted
-    version: "1.8.0"
+    version: "1.8.1"
   supabase_flutter:
     dependency: "direct main"
     description:
       name: supabase_flutter
-      sha256: "653ef1f6476b1e740fa2289e0fd9ed832348772ab4a5525ae985f4043dbed2d6"
+      sha256: "7cbdd9a7264dd5b7ab5a6e2da63346054b8e5ddf358467c7f2bc23d5c14d732c"
       url: "https://pub.dev"
     source: hosted
-    version: "1.9.0"
+    version: "1.9.1"
   term_glyph:
     dependency: transitive
     description:
@@ -1070,10 +1070,10 @@ packages:
     dependency: transitive
     description:
       name: yet_another_json_isolate
-      sha256: "882c63b275b3ec2b97c360f51bb4c023aa9d5f3f33559c7959cf69c19dccf679"
+      sha256: "94ba4947ac1ce44bd6a1634d9df712e07b9b5025ba12abd6750be77ba5c08f18"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.3"
+    version: "1.0.4"
 sdks:
   dart: ">=3.0.0 <4.0.0"
   flutter: ">=3.3.0"

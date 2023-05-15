@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../generated/l10n.dart';
+import '../../themes/custom_ui.dart';
 import '../tasks/task_list_tile.dart';
 import 'home_screen_viewmodel.dart';
 
@@ -17,31 +18,43 @@ class HomeScreenView extends StatelessWidget {
       builder: (context, model, _) => Scaffold(
         appBar: AppBar(title: const Text('Nabu')),
         body: ListView(
-          padding: const EdgeInsets.symmetric(vertical: 16),
+          padding: EdgeInsets.symmetric(
+              vertical: CustomUI.xSize(1), horizontal: CustomUI.xSize(2)),
           children: [
             if (model.tasks.isEmpty)
               Opacity(
                 opacity: 0.5,
                 child: Column(
                   children: [
-                    SizedBox(height: 64),
-                    Icon(Icons.emoji_food_beverage_outlined, size: 48),
-                    SizedBox(height: 16),
+                    SizedBox(height: CustomUI.xSize(8)),
+                    Icon(Icons.emoji_food_beverage_outlined,
+                        size: CustomUI.xSize(6)),
+                    SizedBox(height: CustomUI.xSize(2)),
                     Text(S.of(context).noTasksYet),
                   ],
                 ),
               ),
             ...model.tasks.map((task) {
               return CustomTaskListTile(
-                  width: width,
-                  tileTitleText: task.title,
-                  tileFocusNode: model.getFocusNode(task.id),
-                  isCompleted: task.isCompleted,
-                  updateTaskTitle: (String text) =>
-                      model.updateTaskTitle(task.id, text),
-                  toggleCompletedButtonOnChanged: (bool? toggle) =>
-                      model.toggleStatus(task.id),
-                  trailIconButtonOnPressed: () => model.removeTask(task.id));
+                width: width,
+                tileTitleText: task.title,
+                tileFocusNode: model.getFocusNode(task.id),
+                isCompleted: task.isCompleted,
+                updateTaskTitle: (String text) => {
+                  if (text.isEmpty)
+                    {model.removeTask(task.id)}
+                  else
+                    {model.updateTaskTitle(task.id, text)}
+                },
+                toggleCompletedButtonOnChanged: () =>
+                    model.toggleStatus(task.id),
+                trailIconButtonOnPressed: () => model.removeTask(task.id),
+                onTaskTitleCompleted: (String text) {
+                  if (task.title.isEmpty) {
+                    model.removeTask(task.id);
+                  }
+                },
+              );
             }),
           ],
         ),

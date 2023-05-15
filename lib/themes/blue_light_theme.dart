@@ -15,21 +15,20 @@ class BlueLightTheme {
     return ThemeData(
         useMaterial3: true,
         colorScheme: const ColorScheme.light(
-          primary: jade,
-          onPrimary: azureWeb,
-          secondary: auburn,
-          onSecondary: jetBlack,
-          tertiary: bondiBlue,
-          onTertiary: azureWeb,
-          background: azureWeb,
-          onBackground: jetBlack,
-          tertiaryContainer: azureWeb,
-          onTertiaryContainer: jetBlack,
-          surface: azureWeb,
-          surfaceTint: azureWeb,
-          onSurface: jetBlack,
-          shadow: jetBlack,
-        ),
+            primary: Colors.lightBlue,
+            onPrimary: azureWeb,
+            secondary: auburn,
+            onSecondary: jetBlack,
+            tertiary: bondiBlue,
+            onTertiary: azureWeb,
+            background: azureWeb,
+            onBackground: jetBlack,
+            tertiaryContainer: azureWeb,
+            onTertiaryContainer: jetBlack,
+            surface: azureWeb,
+            surfaceTint: azureWeb,
+            onSurface: jetBlack,
+            shadow: Colors.blue),
         dialogTheme: DialogTheme(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(CustomUI.xSize(1)),
@@ -60,7 +59,7 @@ class BlueLightTheme {
         useMaterial3: true,
         colorScheme: const ColorScheme.dark(
           brightness: Brightness.dark,
-          primary: jade,
+          primary: Colors.lightBlue,
           onPrimary: azureWeb,
           secondary: auburn,
           onSecondary: jetBlack,
@@ -71,7 +70,7 @@ class BlueLightTheme {
           surface: jetBlack,
           surfaceTint: jetBlack,
           onSurface: azureWeb,
-          shadow: azureWeb,
+          shadow: Colors.blue,
         ),
         dialogTheme: DialogTheme(
           shape: RoundedRectangleBorder(
