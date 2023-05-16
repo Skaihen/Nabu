@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:nabu/generated/l10n.dart';
-import 'package:nabu/themes/custom_ui.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
+
+import '../generated/l10n.dart';
+import '../themes/custom_ui.dart';
 
 class TasksView extends StatefulWidget {
   const TasksView({Key? key}) : super(key: key);
@@ -10,8 +10,8 @@ class TasksView extends StatefulWidget {
 }
 
 class _TasksViewState extends State<TasksView> {
-  final _tasksStream =
-      Supabase.instance.client.from('tasks').stream(primaryKey: ['id']);
+  // final _tasksStream =
+  //     Supabase.instance.client.from('tasks').stream(primaryKey: ['id']);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class _TasksViewState extends State<TasksView> {
     return Container(
       margin: const EdgeInsets.all(10.0),
       child: StreamBuilder<List<Map<String, dynamic>>>(
-        stream: _tasksStream,
+        // stream: _tasksStream,
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
             return const Center(
@@ -31,7 +31,7 @@ class _TasksViewState extends State<TasksView> {
 
             if (tasks.isEmpty) {
               return Text(
-                l10n.noTasksToDisplay,
+                l10n.tasksViewNoTasksToDisplay,
                 style: TextStyle(
                   fontSize: CustomUI.xSize(4),
                   fontWeight: FontWeight.bold,
