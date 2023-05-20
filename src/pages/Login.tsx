@@ -21,7 +21,7 @@ const Login: React.FC = () => {
   const [showLoading, hideLoading] = useIonLoading();
   const [showToast] = useIonToast();
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
-    console.log();
+    console.log("enter");
     e.preventDefault();
     await showLoading();
     try {
@@ -52,12 +52,12 @@ const Login: React.FC = () => {
         <IonList inset={true}>
           <form onSubmit={handleLogin}>
             <IonItem>
-              <IonLabel position="stacked">Email</IonLabel>
               <IonInput
                 value={email}
                 name="email"
                 onIonChange={(e) => setEmail(e.detail.value ?? "")}
                 type="email"
+                label="Email"
               ></IonInput>
             </IonItem>
             <div className="ion-text-center">
