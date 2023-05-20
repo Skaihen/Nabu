@@ -1,0 +1,7 @@
+{
+  "name": "Nabu",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
