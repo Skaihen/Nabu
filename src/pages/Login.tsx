@@ -5,7 +5,6 @@ import {
   IonHeader,
   IonInput,
   IonItem,
-  IonLabel,
   IonList,
   IonPage,
   IonTitle,
@@ -15,13 +14,12 @@ import {
 } from "@ionic/react";
 import { supabase } from "../lib/SupabaseConfig";
 
-const Login: React.FC = () => {
+export default function Login() {
   const [email, setEmail] = useState("");
 
   const [showLoading, hideLoading] = useIonLoading();
   const [showToast] = useIonToast();
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
-    console.log("enter");
     e.preventDefault();
     await showLoading();
     try {
@@ -40,13 +38,12 @@ const Login: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Login</IonTitle>
+          <IonTitle>Nabu</IonTitle>
         </IonToolbar>
       </IonHeader>
 
       <IonContent>
         <div className="ion-padding">
-          <h1>Supabase + Ionic React</h1>
           <p>Sign in via magic link with your email below</p>
         </div>
         <IonList inset={true}>
@@ -70,6 +67,4 @@ const Login: React.FC = () => {
       </IonContent>
     </IonPage>
   );
-};
-
-export default Login;
+}

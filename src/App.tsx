@@ -7,15 +7,14 @@ import "@ionic/react/css/ionic.bundle.css";
 /* Theme variables */
 import "./theme/variables.css";
 import Login from "./pages/Login";
-import { AccountPage } from "./pages/Account";
+import Account from "./pages/Account";
 import { useEffect, useState } from "react";
 import { Session } from "@supabase/supabase-js";
 import { supabase } from "./lib/SupabaseConfig";
-import Home from "./pages/Home";
 
 setupIonicReact();
 
-const App: React.FC = () => {
+export default function App() {
   const [session, setSession] = useState<Session | null>(null);
 
   useEffect(() => {
@@ -35,22 +34,15 @@ const App: React.FC = () => {
           <Route exact path="/login">
             <Login />
           </Route>
-          {/* <Route exact path="/account">
-            <AccountPage key={session!.user.id} session={session!} />
-          </Route> */}
           <Route exact path="/">
-            <Redirect to="/login" />
+            {session && session.user ? (
+              <Account key={session.user.id} session={session} />
+            ) : (
+              <Redirect to="/login" />
+            )}
           </Route>
         </IonRouterOutlet>
       </IonReactRouter>
     </IonApp>
   );
-};
-
-export default App;
-
-// return session && session.user ? (
-//   <Redirect to="/account" />
-// ) : (
-//   <Redirect to="/login" />
-// );
+}

@@ -16,7 +16,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "../lib/SupabaseConfig";
 import { Session } from "@supabase/supabase-js";
 
-export function AccountPage({ session }: { session: Session }) {
+export default function Account({ session }: { session: Session }) {
   const [showLoading, hideLoading] = useIonLoading();
   const [showToast] = useIonToast();
   const router = useIonRouter();
