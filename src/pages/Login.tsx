@@ -15,7 +15,7 @@ import {
 } from "@ionic/react";
 import { supabase } from "../lib/SupabaseConfig";
 
-export function LoginPage() {
+const Login: React.FC = () => {
   const [email, setEmail] = useState("");
 
   const [showLoading, hideLoading] = useIonLoading();
@@ -70,4 +70,6 @@ export function LoginPage() {
       </IonContent>
     </IonPage>
   );
-}
+};
+
+export default Login;
