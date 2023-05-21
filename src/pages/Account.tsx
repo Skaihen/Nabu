@@ -9,8 +9,6 @@ import {
   IonTitle,
   IonToolbar,
   useIonLoading,
-  useIonToast,
-  useIonRouter,
 } from "@ionic/react";
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/SupabaseConfig";
@@ -18,73 +16,58 @@ import { Session } from "@supabase/supabase-js";
 
 export default function Account({ session }: { session: Session }) {
   const [showLoading, hideLoading] = useIonLoading();
-  const [showToast] = useIonToast();
-  const router = useIonRouter();
-  const [profile, setProfile] = useState({
-    username: "",
-    website: "",
-    avatar_url: "",
-  });
+
+  const [username, setUsername] = useState<string | null>(null);
+  const [website, setWebsite] = useState<string | null>(null);
+  const [avatar_url, setAvatarUrl] = useState<string | null>(null);
+
   useEffect(() => {
-    if (session) getProfile();
-  }, [session]);
+    async function getProfile() {
+      await showLoading();
+      const { user } = session;
 
-  async function getProfile() {
-    await showLoading();
-    try {
-      if (!session?.user) throw new Error("No user on the session");
-
-      let { data, error, status } = await supabase
+      let { data, error } = await supabase
         .from("profiles")
         .select(`username, website, avatar_url`)
-        .eq("id", session?.user!.id)
+        .eq("id", user.id)
         .single();
-      if (error && status !== 406) {
-        throw error;
-      }
-
-      if (data) {
-        setProfile({
-          username: data.username,
-          website: data.website,
-          avatar_url: data.avatar_url,
-        });
-      }
-    } catch (error: any) {
-      showToast({ message: error.message, duration: 5000 });
-    } finally {
-      await hideLoading();
-    }
-  }
-  async function signOut() {
-    await supabase.auth.signOut();
-    router.push("/", "forward", "replace");
-  }
-  async function updateProfile(e?: any, avatar_url: string = "") {
-    e?.preventDefault();
-    await showLoading();
-
-    try {
-      if (!session?.user) throw new Error("No user on the session!");
-
-      const updates = {
-        id: session?.user.id,
-        ...profile,
-        avatar_url: avatar_url,
-        updated_at: new Date(),
-      };
-
-      let { error } = await supabase.from("profiles").upsert(updates);
 
       if (error) {
-        throw error;
+        console.warn(error);
+      } else if (data) {
+        setUsername(data.username);
+        setWebsite(data.website);
+        setAvatarUrl(data.avatar_url);
       }
-    } catch (error: any) {
-      showToast({ message: error.message, duration: 5000 });
-    } finally {
+
       await hideLoading();
     }
+
+    getProfile();
+  }, [session]);
+
+  async function updateProfile(e: any) {
+    e.preventDefault();
+
+    await showLoading();
+    const { user } = session;
+
+    const updates = {
+      id: user.id,
+      username,
+      website,
+      avatar_url,
+      updated_at: new Date(),
+    };
+
+    let { error } = await supabase.from("profiles").upsert(updates);
+
+    if (error) {
+      alert(error.message);
+    }
+    await hideLoading();
   }
+
   return (
     <IonPage>
       <IonHeader>
@@ -98,7 +81,7 @@ export default function Account({ session }: { session: Session }) {
           <IonItem>
             <IonLabel>
               <p>Email</p>
-              <p>{session?.user?.email}</p>
+              <p>{session.user.email}</p>
             </IonLabel>
           </IonItem>
 
@@ -107,10 +90,9 @@ export default function Account({ session }: { session: Session }) {
             <IonInput
               type="text"
               name="username"
-              value={profile.username}
-              onIonChange={(e) =>
-                setProfile({ ...profile, username: e.detail.value ?? "" })
-              }
+              required
+              value={username || ""}
+              onIonChange={(e) => setUsername(e.target.value as string)}
             ></IonInput>
           </IonItem>
 
@@ -119,10 +101,8 @@ export default function Account({ session }: { session: Session }) {
             <IonInput
               type="url"
               name="website"
-              value={profile.website}
-              onIonChange={(e) =>
-                setProfile({ ...profile, website: e.detail.value ?? "" })
-              }
+              value={website || ""}
+              onIonChange={(e) => setWebsite(e.target.value as string)}
             ></IonInput>
           </IonItem>
           <div className="ion-text-center">
@@ -133,7 +113,7 @@ export default function Account({ session }: { session: Session }) {
         </form>
 
         <div className="ion-text-center">
-          <IonButton fill="clear" onClick={signOut}>
+          <IonButton fill="clear" onClick={() => supabase.auth.signOut()}>
             Log Out
           </IonButton>
         </div>

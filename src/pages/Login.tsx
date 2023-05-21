@@ -16,24 +16,28 @@ import { supabase } from "../lib/SupabaseConfig";
 
 export default function Login() {
   const [email, setEmail] = useState("");
-
   const [showLoading, hideLoading] = useIonLoading();
   const [showToast] = useIonToast();
+
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     await showLoading();
-    try {
-      await supabase.auth.signInWithOtp({ email });
-      await showToast({ message: "Check your email for the login link!" });
-    } catch (e: any) {
+    const { error } = await supabase.auth.signInWithOtp({ email });
+
+    if (error) {
       await showToast({
-        message: e.error_description || e.message,
+        message: error.message,
         duration: 5000,
       });
-    } finally {
-      await hideLoading();
+    } else {
+      await showToast({
+        message: "Check your email for the login link!",
+      });
     }
+    await hideLoading();
   };
+
   return (
     <IonPage>
       <IonHeader>
@@ -50,11 +54,12 @@ export default function Login() {
           <form onSubmit={handleLogin}>
             <IonItem>
               <IonInput
+                type="email"
                 value={email}
                 name="email"
-                onIonChange={(e) => setEmail(e.detail.value ?? "")}
-                type="email"
                 label="Email"
+                required
+                onIonChange={(e) => setEmail(e.target.value as string)}
               ></IonInput>
             </IonItem>
             <div className="ion-text-center">

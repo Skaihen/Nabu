@@ -31,14 +31,11 @@ export default function App() {
     <IonApp>
       <IonReactRouter>
         <IonRouterOutlet>
-          <Route exact path="/login">
-            <Login />
-          </Route>
           <Route exact path="/">
             {session && session.user ? (
               <Account key={session.user.id} session={session} />
             ) : (
-              <Redirect to="/login" />
+              <Login />
             )}
           </Route>
         </IonRouterOutlet>
