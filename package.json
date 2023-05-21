@@ -9,6 +9,10 @@
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json"
   },
+  "dependencies": {
+    "@capacitor/android": "^5.0.3",
+    "@capacitor/core": "^5.0.3"
+  },
   "devDependencies": {
     "@capacitor/cli": "^5.0.3",
     "@sveltejs/adapter-static": "^2.0.2",
@@ -19,9 +23,5 @@
     "tslib": "^2.5.2",
     "typescript": "^5.0.4",
     "vite": "^4.3.8"
-  },
-  "dependencies": {
-    "@capacitor/android": "^5.0.3",
-    "@capacitor/core": "^5.0.3"
   }
 }
