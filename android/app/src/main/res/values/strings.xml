@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Nabu</string>
+    <string name="title_activity_main">Nabu</string>
+    <string name="package_name">me.skaihen.nabu</string>
+    <string name="custom_url_scheme">me.skaihen.nabu</string>
+</resources>
