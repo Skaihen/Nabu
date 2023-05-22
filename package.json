@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "check": "svelte-check --tsconfig ./tsconfig.json"
+    "check": "svelte-check --tsconfig ./tsconfig.json",
+    "ionic:build": "npm run build",
+    "ionic:serve": "npm run dev"
   },
   "dependencies": {
     "@capacitor/android": "^5.0.3",

@@ -1,0 +1,7 @@
+{
+  "name": "nabu",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "custom"
+}
