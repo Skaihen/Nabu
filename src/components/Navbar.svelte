@@ -12,7 +12,7 @@
       </div>
       <ul
         tabindex="-1"
-        class="menu menu-compact dropdown-content mt-2 p-2 shadow bg-base-100 rounded-box w-48"
+        class="menu menu-compact dropdown-content mt-2 p-2 shadow bg-base-100 rounded-md w-48"
       >
         <li><p>Settings</p></li>
         <li><p>Logout</p></li>
