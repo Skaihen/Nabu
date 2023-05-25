@@ -4,4 +4,6 @@
 
 <main class="p-4">
   <ListItem />
+  <ListItem />
+  <ListItem />
 </main>
