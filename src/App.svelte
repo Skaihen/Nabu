@@ -3,7 +3,7 @@
   import Navbar from "./components/Navbar.svelte"
 </script>
 
-<div class=" h-screen max-h-screen overflow-hidden bg-base-200">
+<div class="bg-base-300">
   <Navbar />
   <ListView />
 </div>

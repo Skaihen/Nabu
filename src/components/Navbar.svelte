@@ -1,7 +1,7 @@
 <script lang="ts">
 </script>
 
-<nav class="navbar px-4">
+<nav class="navbar sticky top-0 z-10 px-4 bg-base-300">
   <div class="navbar-start">
     <p class="normal-case text-xl">Nabu</p>
   </div>
@@ -12,7 +12,7 @@
       </div>
       <ul
         tabindex="-1"
-        class="menu menu-compact dropdown-content mt-2 p-2 shadow bg-base-100 rounded-md w-48"
+        class="menu menu-compact dropdown-content mt-2 p-2 bg-base-100 rounded-md w-48 shadow-xl"
       >
         <li><p>Settings</p></li>
         <li><p>Logout</p></li>
