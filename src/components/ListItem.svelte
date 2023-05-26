@@ -52,8 +52,5 @@
       hsl(var(--af)) 50%,
       hsl(var(--b1)) 50%
     );
-    background-size: 250% 100%;
-    background-position: right bottom;
-    transition: background-position 0.3s ease;
   }
 </style>
