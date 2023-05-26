@@ -39,7 +39,7 @@
     <ListItem
       text={item.text}
       isCompleted={item.status}
-      onClick={() => {
+      onCardClick={() => {
         item.status = !item.status
       }}
     />
