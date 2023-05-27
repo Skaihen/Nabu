@@ -2,7 +2,10 @@
   export let hidden = true
 </script>
 
-<div class:hidden class="absolute bottom-0 flex w-full justify-center p-4">
+<div
+  class:hidden
+  class="absolute bottom-0 flex w-full justify-center py-4 px-4 sm:px-6 lg:px-8"
+>
   <div class="alert alert-error shadow-lg">
     <div>
       <ion-icon

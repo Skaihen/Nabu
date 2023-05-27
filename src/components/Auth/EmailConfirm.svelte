@@ -2,22 +2,17 @@
   export let hidden = true
 </script>
 
-<div class:hidden class="absolute bottom-0 flex w-full justify-center p-4">
+<div
+  class:hidden
+  class="absolute bottom-0 flex w-full justify-center py-4 px-4 sm:px-6 lg:px-8"
+>
   <div class="alert alert-success shadow-lg">
     <div>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
+      <ion-icon
+        name="checkmark-circle-outline"
         class="stroke-current flex-shrink-0 h-6 w-6"
-        fill="none"
-        viewBox="0 0 24 24"
-        ><path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-        /></svg
-      >
-      <span>Your purchase has been confirmed!</span>
+      />
+      <span>Check your email for login link!</span>
     </div>
   </div>
 </div>

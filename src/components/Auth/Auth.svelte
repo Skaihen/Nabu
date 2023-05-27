@@ -5,18 +5,24 @@
 
   let loading = false
   let email = ""
+  let hideEmailDeny = true
   let hideEmailConfirm = true
-  let hideEmailDeny = false
 
   const handleLogin = async () => {
     try {
       loading = true
       const { error } = await supabase.auth.signInWithOtp({ email })
       if (error) throw error
-      alert("Check your email for login link!")
+      hideEmailConfirm = false
+      setTimeout(() => {
+        hideEmailConfirm = true
+      }, 4000)
     } catch (error) {
       if (error instanceof Error) {
-        alert(error.message)
+        hideEmailDeny = false
+        setTimeout(() => {
+          hideEmailDeny = true
+        }, 4000)
       }
     } finally {
       loading = false
@@ -52,6 +58,7 @@
             type="email"
             class="input input-bordered w-full p-4 pe-12 text-sm shadow-sm"
             placeholder="Enter email"
+            autocomplete="on"
             bind:value={email}
           />
 
