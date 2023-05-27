@@ -54,7 +54,7 @@
 
         <div class="relative">
           <input
-            id="email"
+            name="email"
             type="email"
             class="input input-bordered w-full p-4 pe-12 text-sm shadow-sm"
             placeholder="Enter email"
