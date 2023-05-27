@@ -24,17 +24,15 @@
   }
 </script>
 
-<div
-  aria-live="polite"
-  class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8"
->
-  <div class="mx-auto max-w-lg">
+<div aria-live="polite" class="px-4 py-16 sm:px-6 lg:px-8">
+  <div class="">
     <h1 class="text-center text-2xl font-bold text-primary-content sm:text-3xl">
       Get started with Nabu
     </h1>
 
-    <p class="mx-auto mt-4 max-w-md text-center text-gray-500">
-      Nabu is a scrum-like ToDo app for managing your projects.
+    <p class="  text-center text-gray-500">
+      Nabu is a scrum-like ToDo app for managing your projects, tasks, or
+      what-ever you need!!
     </p>
 
     <form
