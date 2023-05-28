@@ -18,8 +18,9 @@
         <li>
           <button
             type="button"
-            class="button block"
-            on:click={() => supabase.auth.signOut()}
+            class="btn-ghost btn-block"
+            on:click={() =>
+              supabase.auth.signOut().then(() => window.location.reload())}
           >
             Sign Out
           </button>

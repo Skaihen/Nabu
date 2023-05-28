@@ -29,6 +29,6 @@
   <div>
     <!-- <Account {session} /> -->
     <Navbar />
-    <ListView />
+    <ListView {session} />
   </div>
 {/if}
