@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { supabase } from "../lib/supabaseClient"
 </script>
 
 <nav class="navbar sticky top-0 z-10 px-4 bg-base-300">
@@ -14,8 +15,15 @@
         tabindex="-1"
         class="menu menu-compact dropdown-content mt-2 p-2 bg-base-100 rounded-md w-48 shadow-xl"
       >
-        <li><p>Settings</p></li>
-        <li><p>Logout</p></li>
+        <li>
+          <button
+            type="button"
+            class="button block"
+            on:click={() => supabase.auth.signOut()}
+          >
+            Sign Out
+          </button>
+        </li>
       </ul>
     </div>
   </div>

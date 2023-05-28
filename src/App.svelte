@@ -1,8 +1,9 @@
 <script lang="ts">
   import type { AuthSession } from "@supabase/supabase-js"
   import { onMount } from "svelte"
-  import Account from "./components/Account.svelte"
   import Auth from "./components/Auth/Auth.svelte"
+  import ListView from "./components/ListView.svelte"
+  import Navbar from "./components/Navbar.svelte"
   import { supabase } from "./lib/supabaseClient"
 
   let session: AuthSession
@@ -26,8 +27,8 @@
   <Auth />
 {:else}
   <div>
-    <Account {session} />
-    <!-- <Navbar />
-    <ListView /> -->
+    <!-- <Account {session} /> -->
+    <Navbar />
+    <ListView />
   </div>
 {/if}

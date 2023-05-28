@@ -6,7 +6,7 @@
   class:hidden
   class="absolute bottom-0 flex w-full justify-center py-4 px-4 sm:px-6 lg:px-8"
 >
-  <div class="alert alert-error shadow-lg">
+  <div class="alert alert-error shadow-lg rounded-lg">
     <div>
       <ion-icon
         name="close-circle-outline"

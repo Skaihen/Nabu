@@ -38,7 +38,7 @@
 
     <p class="  text-center text-gray-500">
       Nabu is a scrum-like ToDo app for managing your projects, tasks, or
-      what-ever you need!!
+      whatever you need!!
     </p>
 
     <form
