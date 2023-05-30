@@ -19,8 +19,15 @@
           <button
             type="button"
             class="btn-ghost btn-block"
-            on:click={() =>
-              supabase.auth.signOut().then(() => window.location.reload())}
+            on:click={async () => {
+              const { error } = await supabase.auth.signOut()
+
+              if (error) {
+                console.log("Error logging out:", error.message)
+              } else {
+                window.location.reload()
+              }
+            }}
           >
             Sign Out
           </button>

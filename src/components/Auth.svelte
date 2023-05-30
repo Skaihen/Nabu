@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Provider } from "@supabase/supabase-js"
-  import { supabase } from "../../lib/supabaseClient"
+  import { supabase } from "../lib/supabaseClient"
 
   interface HelperText {
     error: boolean
@@ -73,6 +73,7 @@
             name="email"
             class="input input-bordered w-full p-4 pe-12 text-sm shadow-sm"
             placeholder="Enter email"
+            autocomplete="email"
             required
           />
 

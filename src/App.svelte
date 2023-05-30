@@ -1,7 +1,9 @@
 <script lang="ts">
   import type { User } from "@supabase/supabase-js"
   import { onMount } from "svelte"
-  import Auth from "./components/Auth/Auth.svelte"
+  import Auth from "./components/Auth.svelte"
+  import Home from "./components/Home.svelte"
+  import Navbar from "./components/Navbar.svelte"
   import { supabase } from "./lib/supabaseClient"
 
   let user: User | null
@@ -25,10 +27,8 @@
 </script>
 
 {#if user}
-  <!--   <div>
-    <Navbar />
-    <Home bind:user />
-  </div> -->
+  <Navbar />
+  <Home bind:user />
 {:else}
   <Auth />
 {/if}
