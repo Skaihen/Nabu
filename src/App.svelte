@@ -1,34 +1,27 @@
 <script lang="ts">
-  import type { User } from "@supabase/supabase-js"
+  import type { AuthSession } from "@supabase/supabase-js"
   import { onMount } from "svelte"
   import Auth from "./components/Auth.svelte"
   import Home from "./components/Home.svelte"
   import Navbar from "./components/Navbar.svelte"
   import { supabase } from "./lib/supabaseClient"
 
-  let user: User | null
+  let session: AuthSession | null
 
   onMount(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      user = session?.user ?? null
+    supabase.auth.getSession().then(({ data }) => {
+      session = data.session
     })
 
-    const {
-      data: { subscription: authListener }
-    } = supabase.auth.onAuthStateChange((_, session) => {
-      const currentUser = session?.user
-      user = currentUser ?? null
+    supabase.auth.onAuthStateChange((_event, _session) => {
+      session = _session
     })
-
-    return () => {
-      authListener?.unsubscribe()
-    }
   })
 </script>
 
-{#if user}
-  <Navbar />
-  <Home bind:user />
-{:else}
+{#if !session}
   <Auth />
+{:else}
+  <Navbar />
+  <Home bind:session />
 {/if}

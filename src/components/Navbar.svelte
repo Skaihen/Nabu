@@ -2,7 +2,7 @@
   import { supabase } from "../lib/supabaseClient"
 </script>
 
-<nav class="navbar sticky top-0 z-10 px-4 bg-base-300">
+<nav class="navbar sticky top-0 z-10 px-4">
   <div class="navbar-start">
     <p class="normal-case text-xl">Nabu</p>
   </div>
