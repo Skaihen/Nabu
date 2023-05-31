@@ -7,51 +7,72 @@
 
   export let session: AuthSession
 
+  let errorText = ""
   let todos: any = []
   let newTaskText = ""
-  let errorText = ""
+  let loading: boolean = false
 
   onMount(() => {
     fetchTodos()
   })
 
   const fetchTodos = async () => {
-    let { data, error } = await supabase
-      .from("todos")
-      .select("*")
-      .eq("user_id", session.user.id)
-      .order("id", { ascending: true })
-    if (error) {
-      console.log("error", error)
-    } else {
+    try {
+      loading = true
+      let { data, error } = await supabase
+        .from("todos")
+        .select("*")
+        .eq("user_id", session.user.id)
+        .order("id", { ascending: true })
+
+      if (error) throw error
+
       todos = data
+    } catch (error) {
+      if (error instanceof Error) {
+        errorText = error.message
+      }
+    } finally {
+      loading = false
     }
   }
 
   const addTodo = async (taskText: string) => {
-    let task = taskText.trim()
-    if (task.length) {
-      let { data: todo, error } = await supabase
-        .from("todos")
-        .insert({ task, user_id: session.user.id })
-        .select()
-        .single()
-
-      if (error) {
-        errorText = error.message
-      } else {
-        todos = [...todos, todo]
+    try {
+      loading = true
+      let task = taskText.trim()
+      if (task.length) {
         newTaskText = ""
+        let { data, error } = await supabase
+          .from("todos")
+          .insert({ task, user_id: session.user.id })
+          .select()
+          .single()
+
+        if (error) throw error
+
+        todos = [...todos, data]
       }
+    } catch (error) {
+      if (error instanceof Error) {
+        errorText = error.message
+      }
+    } finally {
+      loading = false
     }
   }
 
   const deleteTodo = async (id: number) => {
     try {
+      loading = true
       await supabase.from("todos").delete().eq("id", id)
       todos = todos.filter((x: any) => x.id != id)
     } catch (error) {
-      console.log("error", error)
+      if (error instanceof Error) {
+        errorText = error.message
+      }
+    } finally {
+      loading = false
     }
   }
 </script>
@@ -71,9 +92,9 @@
         placeholder="make coffee"
         bind:value={newTaskText}
       />
-      <button type="submit" class="btn-black"> Add </button>
+      <button type="submit" class:loading class="btn"> Add </button>
     </form>
-    {#if !!errorText}
+    {#if errorText}
       <Alert text={errorText} />
     {/if}
     <div class="bg-white shadow overflow-hidden rounded-md">

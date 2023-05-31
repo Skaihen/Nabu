@@ -134,9 +134,9 @@
           <button
             on:click={() => handleLogin("REGISTER")}
             type="submit"
+            class:loading
             class="btn btn-block btn-primary btn-outline shadow-sm btn-sm"
             aria-live="polite"
-            disabled={loading}
           >
             {loading ? "Loading" : "Sign Up"}
           </button>
@@ -145,9 +145,9 @@
           <button
             on:click={() => handleLogin("LOGIN")}
             type="submit"
+            class:loading
             class="btn btn-block btn-primary shadow-sm btn-sm"
             aria-live="polite"
-            disabled={loading}
           >
             {loading ? "Loading" : "Sign In"}
           </button>
