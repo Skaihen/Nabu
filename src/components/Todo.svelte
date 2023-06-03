@@ -1,7 +1,13 @@
 <script lang="ts">
   import { supabase } from "../lib/supabaseClient"
 
-  export let todo: { task: string; id: number; is_complete: boolean }
+  export let todo: {
+    task: string
+    id: number
+    is_complete: boolean
+    task_value: number
+    estimated_time: number
+  }
   export let onDelete = () => {}
 
   let isCompleted = todo.is_complete
@@ -24,13 +30,19 @@
   }
 </script>
 
-<li
-  class="w-full block cursor-pointer hover:bg-gray-200 focus:outline-none focus:bg-gray-200 transition duration-150 ease-in-out"
->
-  <div class="flex items-center px-4 py-4 sm:px-6">
-    <div class="min-w-0 flex-1 flex items-center">
-      <div class="text-sm leading-5 font-medium truncate">{todo.task}</div>
+<li class="collapse collapse-arrow join-item border border-base-300">
+  <input type="radio" name="accordionTask" />
+  <div
+    class="collapse-title text-sm font-medium grid grid-cols-[0.65fr_0.35fr] justify-between items-center gap-4"
+  >
+    <p class="truncate flex-shrink">{todo.task}</p>
+    <div class="flex flex-row justify-between gap-4">
+      <p>Est.(h): {todo.estimated_time}</p>
+      <p>Value: {todo.task_value}</p>
     </div>
+  </div>
+  <div class="collapse-content flex justify-between items-center gap-4">
+    <p>{todo.task}</p>
     <div>
       <input
         class="cursor-pointer"
@@ -39,17 +51,11 @@
         bind:checked={isCompleted}
       />
     </div>
-    <button
-      on:click={onDelete}
-      class="w-4 h-4 ml-2 border-2 hover:border-black rounded"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="gray">
-        <path
-          fill-rule="evenodd"
-          d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-          clip-rule="evenodd"
-        />
-      </svg>
+    <button on:click={onDelete}>
+      <ion-icon
+        name="close-outline"
+        class="w-4 h-4 border-2 hover:border-black rounded"
+      />
     </button>
   </div>
 </li>

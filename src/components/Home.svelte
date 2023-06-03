@@ -7,9 +7,11 @@
 
   export let session: AuthSession
 
-  let errorText = ""
+  let errorText: string = ""
   let todos: any = []
-  let newTaskText = ""
+  let newTaskText: string = ""
+  let taskValue: number = 1
+  let estimatedTime: number = 1
   let loading: boolean = false
 
   onMount(() => {
@@ -23,7 +25,7 @@
         .from("todos")
         .select("*")
         .eq("user_id", session.user.id)
-        .order("id", { ascending: true })
+        .order("task_value", { ascending: false })
 
       if (error) throw error
 
@@ -37,15 +39,23 @@
     }
   }
 
-  const addTodo = async (taskText: string) => {
+  const addTodo = async (
+    taskText: string,
+    estimatedTime: number,
+    taskValue: number
+  ) => {
     try {
       loading = true
       let task = taskText.trim()
       if (task.length) {
-        newTaskText = ""
         let { data, error } = await supabase
           .from("todos")
-          .insert({ task, user_id: session.user.id })
+          .insert({
+            user_id: session.user.id,
+            task,
+            estimated_time: estimatedTime,
+            task_value: taskValue
+          })
           .select()
           .single()
 
@@ -58,6 +68,9 @@
         errorText = error.message
       }
     } finally {
+      newTaskText = ""
+      estimatedTime = 1
+      taskValue = 1
       loading = false
     }
   }
@@ -78,31 +91,76 @@
 </script>
 
 <div
-  class="w-full h-full flex flex-col justify-center items-center p-4"
-  style="min-width: 250px; max-width: 600px; margin: auto;"
+  class="w-full h-full flex flex-col justify-center items-center p-4 m-auto max-w-4xl"
 >
   <div class="w-full">
     <form
-      on:submit|preventDefault={() => addTodo(newTaskText)}
-      class="flex gap-2 my-2"
+      on:submit|preventDefault={() =>
+        addTodo(newTaskText, estimatedTime, taskValue)}
+      class="grid grid-cols-[5fr_2fr_2fr_1fr] items-end gap-2 my-2"
     >
-      <input
-        class="rounded w-full p-2"
-        type="text"
-        placeholder="make coffee"
-        bind:value={newTaskText}
-      />
-      <button type="submit" class:loading class="btn"> Add </button>
+      <div class="form-control w-full">
+        <label for="newTaskText" class="label pb-1">
+          <span class="label-text">Task</span>
+        </label>
+        <input
+          bind:value={newTaskText}
+          id="newTaskText"
+          class="input input-bordered w-full"
+          type="text"
+          placeholder="Make coffee"
+          required
+        />
+      </div>
+
+      <div class="form-control w-full">
+        <label for="estimatedTime" class="label pb-1">
+          <span class="label-text">Estimated (hours)</span>
+        </label>
+        <input
+          bind:value={estimatedTime}
+          id="estimatedTime"
+          class="input input-bordered w-full"
+          type="number"
+          min="1"
+          max="9999"
+          placeholder="Estimated Time (hours)"
+          required
+        />
+      </div>
+
+      <div class="form-control w-full">
+        <label for="taskValue" class="label pb-1">
+          <span class="label-text">Task Value</span>
+        </label>
+        <input
+          bind:value={taskValue}
+          id="taskValue"
+          class="input input-bordered w-full"
+          type="number"
+          min="1"
+          max="9999"
+          placeholder="Task Value"
+          required
+        />
+      </div>
+
+      <button type="submit" class="btn">
+        {#if loading}
+          <span class="loading loading-spinner" />
+        {:else}
+          Add
+        {/if}
+      </button>
     </form>
     {#if errorText}
       <Alert text={errorText} />
     {/if}
-    <div class="bg-white shadow overflow-hidden rounded-md">
-      <ul>
-        {#each todos as todo (todo.id)}
-          <Todo {todo} onDelete={() => deleteTodo(todo.id)} />
-        {/each}
-      </ul>
-    </div>
+
+    <ul class="join join-vertical w-full shadow overflow-hidden rounded-md">
+      {#each todos as todo (todo.id)}
+        <Todo {todo} onDelete={() => deleteTodo(todo.id)} />
+      {/each}
+    </ul>
   </div>
 </div>
