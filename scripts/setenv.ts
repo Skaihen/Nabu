@@ -1,6 +1,8 @@
 const { writeFile } = require('fs')
 const { argv } = require('yargs')
 
+require('dotenv').config()
+
 const environment = argv.environment
 const isProduction = environment === 'prod'
 
