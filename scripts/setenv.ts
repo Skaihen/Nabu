@@ -23,10 +23,5 @@ writeFile(targetPath, environmentFileContent, function (err: any) {
     console.log(err)
   }
 
-  console.log(`process.env['SUPABASE_URL'] = ${process.env['SUPABASE_URL']}`)
-  console.log(
-    `process.env['SUPABASE_ANON_KEY'] = ${process.env['SUPABASE_ANON_KEY']}`
-  )
-
   console.log(`Wrote variables to ${targetPath}`)
 })
