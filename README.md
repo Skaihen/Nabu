@@ -1,3 +1,3 @@
 # Nabu
 
-A todos + notes apps built with flutter, getIt, hive and stacked.
+A todos + notes apps built with angular/capacitor.

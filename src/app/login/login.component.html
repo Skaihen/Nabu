@@ -1,0 +1,68 @@
+<div *ngIf="loading"
+  class="absolute w-full h-full flex justify-center items-center z-50 text-base-300 bg-black bg-opacity-50">
+  <span class="loading loading-spinner loading-lg"></span>
+</div>
+
+<div class="mx-auto max-w-screen-xl px-4 py-9 sm:px-6 lg:px-8">
+  <div class="mx-auto max-w-lg">
+    <h1 class="text-center text-3xl font-bold text-primary">
+      Get started with Nabu
+    </h1>
+
+    <p class="mx-auto mt-4 max-w-md text-center text-gray-500">
+      Nabu is a scrum-like ToDo app for managing your projects, tasks, or
+      whatever you need!!
+    </p>
+
+    <div class="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8">
+      <p class="text-center text-lg font-medium">Sign in to your account</p>
+
+      <form ngNativeValidate [formGroup]="signInForm" (ngSubmit)="onSignInSubmit()" class="form-control gap-3">
+        <div>
+          <label for="email" class="sr-only">Email</label>
+
+          <div class="relative">
+            <input id="email" formControlName="email" type="email" name="email" placeholder="Enter email"
+              class="input input-bordered w-full p-4 pe-12 text-sm shadow-sm" required />
+
+            <span class="absolute inset-y-0 end-0 grid place-content-center px-4">
+              <ion-icon name="at-outline" class="pointer-events-none w-4 h-4 text-gray-400" />
+            </span>
+          </div>
+        </div>
+
+        <div>
+          <label for="password" class="sr-only">Password</label>
+
+          <div class="relative">
+            <input id="password" formControlName="password" type="password" name="password" placeholder="Enter password"
+              class="input input-bordered w-full p-4 pe-12 text-sm shadow-sm" required />
+
+            <span class="absolute inset-y-0 end-0 grid place-content-center px-4">
+              <ion-icon name="eye-outline" class="pointer-events-none w-4 h-4 text-gray-400" />
+            </span>
+          </div>
+        </div>
+
+        <div *ngIf="helperText.text"
+          class="border px-1 py-2 text-center text-sm rounded-lg shadow-sm bg-red-100 border-red-300 text-red-400">
+          <div class="flex items-center">
+            <ion-icon name="close-circle-outline" class="stroke-current flex-shrink-0 h-5 w-5" />
+            <span>
+              {{helperText.text}}
+            </span>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-block btn-primary shadow-sm btn-sm">
+          Sign In
+        </button>
+      </form>
+
+      <p class="text-center text-sm text-gray-500">
+        Don't have an account yet?
+        <a class="underline" routerLink="/signup" routerLinkActive="active" ariaCurrentWhenActive="page">Sign up</a>
+      </p>
+    </div>
+  </div>
+</div>
