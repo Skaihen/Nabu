@@ -18,6 +18,13 @@ export const environment = {
 };
 `
 
+if (isProduction) {
+  writeFile(`./src/environments/environment.ts`, '', function (err: any) {
+    if (err) {
+      console.log(err)
+    }
+  })
+}
 writeFile(targetPath, environmentFileContent, function (err: any) {
   if (err) {
     console.log(err)
