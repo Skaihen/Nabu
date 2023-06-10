@@ -76,30 +76,4 @@ export class HomeComponent implements OnInit {
       this.loading = false
     }
   }
-
-  async toggleCompleted(todoId: number, isCompleted: boolean): Promise<void> {
-    try {
-      const { error } = await this.supabase.toggleTodo(todoId, isCompleted)
-      if (error) throw error
-    } catch (error) {
-      if (error instanceof Error) {
-        console.log('error', error)
-      }
-    }
-  }
-
-  async deleteTodo(id: number): Promise<void> {
-    try {
-      this.loading = true
-
-      await this.supabase.deleteTodo(id)
-      this.todos = this.todos.filter((x: any) => x.id != id)
-    } catch (error) {
-      if (error instanceof Error) {
-        this.errorText = error.message
-      }
-    } finally {
-      this.loading = false
-    }
-  }
 }

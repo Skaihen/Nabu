@@ -8,10 +8,12 @@ import { LoginComponent } from './login/login.component'
 import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { TodoComponent } from './components/todo/todo.component'
+import { TodoComponent } from './components/todo/todo.component';
+import { LoadingScreenComponent } from './components/loading-screen/loading-screen.component';
+import { TodoModalComponent } from './components/todo-modal/todo-modal.component'
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, SignupComponent, HomeComponent, NavbarComponent, TodoComponent],
+  declarations: [AppComponent, LoginComponent, SignupComponent, HomeComponent, NavbarComponent, TodoComponent, LoadingScreenComponent, TodoModalComponent],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],

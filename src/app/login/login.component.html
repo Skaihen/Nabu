@@ -1,7 +1,4 @@
-<div *ngIf="loading"
-  class="absolute w-full h-full flex justify-center items-center z-50 text-base-300 bg-black bg-opacity-50">
-  <span class="loading loading-spinner loading-lg"></span>
-</div>
+<app-loading-screen [loading]="loading" />
 
 <div class="mx-auto max-w-screen-xl px-4 py-9 sm:px-6 lg:px-8">
   <div class="mx-auto max-w-lg">
@@ -61,7 +58,8 @@
 
       <p class="text-center text-sm text-gray-500">
         Don't have an account yet?
-        <a class="underline" routerLink="/signup" routerLinkActive="active" ariaCurrentWhenActive="page">Sign up</a>
+        <a class="link link-primary" routerLink="/signup" routerLinkActive="active" ariaCurrentWhenActive="page">Sign
+          up</a>
       </p>
     </div>
   </div>
