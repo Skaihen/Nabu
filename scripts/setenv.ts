@@ -13,8 +13,8 @@ const targetPath = isProduction
 const environmentFileContent = `
 export const environment = {
    production: ${isProduction},
-   supabaseUrl: "${process.env.SUPABASE_URL}",
-   supabaseKey: "${process.env.SUPABASE_ANON_KEY}"
+   supabaseUrl: "${process.env['SUPABASE_URL']}",
+   supabaseKey: "${process.env['SUPABASE_ANON_KEY']}"
 };
 `
 
