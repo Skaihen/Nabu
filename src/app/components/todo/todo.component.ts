@@ -9,8 +9,6 @@ import { TodoInterface } from 'src/app/types/TodoInterface'
 export class TodoComponent implements OnInit {
   @Input({ required: true }) todo!: TodoInterface
 
-  loading: boolean = false
-  errorText: string = ''
   isCompleted!: boolean
 
   constructor(private readonly supabase: SupabaseService) {}
@@ -33,19 +31,4 @@ export class TodoComponent implements OnInit {
       }
     }
   }
-
-  /*   async deleteTodo(): Promise<void> {
-    try {
-      this.loading = true
-
-      await this.supabase.deleteTodo(this.todo.id)
-      this.todos = this.todos.filter((x: any) => x.id != id)
-    } catch (error) {
-      if (error instanceof Error) {
-        this.errorText = error.message
-      }
-    } finally {
-      this.loading = false
-    }
-  } */
 }

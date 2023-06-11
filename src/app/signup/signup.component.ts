@@ -1,6 +1,7 @@
 import { Component } from '@angular/core'
 import { FormBuilder } from '@angular/forms'
 import { SupabaseService } from 'src/app/services/supabase.service'
+import { UtilsService } from 'src/app/services/utils.service'
 import { HelperTextInterface } from 'src/app/types/HelperTextInterface'
 
 @Component({
@@ -8,7 +9,6 @@ import { HelperTextInterface } from 'src/app/types/HelperTextInterface'
   templateUrl: './signup.component.html'
 })
 export class SignupComponent {
-  loading: boolean = false
   helperText: HelperTextInterface = { error: false, text: null }
 
   signUpForm = this.formBuilder.group({
@@ -19,12 +19,13 @@ export class SignupComponent {
 
   constructor(
     private readonly supabase: SupabaseService,
-    private readonly formBuilder: FormBuilder
+    private readonly formBuilder: FormBuilder,
+    private readonly utils: UtilsService
   ) {}
 
   async onSignUpSubmit(): Promise<void> {
     try {
-      this.loading = true
+      this.utils.toggleLoading(true)
 
       const email = this.signUpForm.value.email as string
       const password = this.signUpForm.value.password as string
@@ -50,8 +51,8 @@ export class SignupComponent {
         this.helperText = { error: true, text: error.message }
       }
     } finally {
-      this.signUpForm.reset()
-      this.loading = false
+      this.signUpForm.get('confirmPassword')?.reset()
+      this.utils.toggleLoading(false)
     }
   }
 }

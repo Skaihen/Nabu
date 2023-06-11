@@ -1,46 +1,17 @@
-<app-loading-screen [loading]="loading" />
-
 <app-navbar />
 
-<div class="w-full h-full flex flex-col justify-center items-center p-4 m-auto max-w-4xl">
+<div class="w-full flex flex-col justify-center items-center p-4 m-auto max-w-4xl">
   <div class="w-full">
-    <form ngNativeValidate [formGroup]="createTaskForm" (ngSubmit)="addTodo()"
-      class="grid grid-cols-[5fr_2fr_2fr_1fr] items-end gap-2 my-2">
-      <div class="form-control w-full">
-        <label for="newTaskText" class="label pb-1">
-          <span class="label-text">Task</span>
-        </label>
-        <input id="newTaskText" formControlName="newTaskText" class="input input-bordered w-full" type="text"
-          placeholder="Make coffee" required />
-      </div>
-
-      <div class="form-control w-full">
-        <label for="estimatedTime" class="label pb-1">
-          <span class="label-text">Estimated (hours)</span>
-        </label>
-        <input id="estimatedTime" formControlName="estimatedTime" class="input input-bordered w-full" type="number"
-          min="1" max="9999" placeholder="Estimated Time (hours)" required />
-      </div>
-
-      <div class="form-control w-full">
-        <label for="taskValue" class="label pb-1">
-          <span class="label-text">Task Value</span>
-        </label>
-        <input id="taskValue" formControlName="taskValue" class="input input-bordered w-full" type="number" min="1"
-          max="9999" placeholder="Task Value" required />
-      </div>
-
-      <button type="submit" class="btn">
-        Add
-      </button>
-    </form>
-
-    <div *ngIf="errorText" class="rounded-md bg-red-100 p-4 my-2">
-      <div class="text-sm leading-5 text-red-700">{{errorText}}</div>
+    <div *ngIf="todoErrorText" class="rounded-md bg-red-100 p-4 my-2">
+      <div class="text-sm leading-5 text-red-700">{{todoErrorText}}</div>
     </div>
 
-    <ul class="w-full overflow-hidden flex flex-col gap-3">
-      <app-todo *ngFor="let todo of todos" [todo]="todo" />
+    <ul class="w-full flex flex-col gap-3 mb-20">
+      <app-todo *ngFor="let todo of todosList" [todo]="todo" />
     </ul>
   </div>
 </div>
+
+<button class="w-14 h-14 rounded-2xl btn btn-primary btn-square fixed right-4 bottom-4 shadow-lg"
+  onclick="addTodoModal.showModal()"><ion-icon name="add-outline" class="w-6 h-6"></ion-icon></button>
+<app-todo-modal></app-todo-modal>

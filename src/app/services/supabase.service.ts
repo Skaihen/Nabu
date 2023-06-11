@@ -55,7 +55,7 @@ export class SupabaseService {
       .order('task_value', { ascending: false })
   }
 
-  editTodo(taskText: string, estimatedTime: number, taskValue: number) {
+  addTodo(taskText: string, estimatedTime: number, taskValue: number) {
     return this.supabase
       .from('todos')
       .insert({

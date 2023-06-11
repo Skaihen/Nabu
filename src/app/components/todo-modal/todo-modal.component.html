@@ -1,1 +1,46 @@
-<p>todo-modal works!</p>
+<dialog id="addTodoModal" class="modal modal-bottom sm:modal-middle">
+  <form ngNativeValidate [formGroup]="createTaskForm" (ngSubmit)="addTodo()" class="modal-box space-y-6"
+    method="dialog">
+
+    <h3 class="font-bold text-2xl mb-8">Add New Task</h3>
+
+    <div class="form-control w-full">
+      <label for="newTaskText" class="label px-0 py-1">
+        <span class="label-text">Task</span>
+      </label>
+      <input id="newTaskText" formControlName="newTaskText" class="input input-bordered w-full" type="text"
+        placeholder="Make coffee" required />
+    </div>
+
+    <div class="grid grid-cols-2 gap-4">
+
+      <div class="form-control w-full">
+        <label for="estimatedTime" class="label px-0 py-1">
+          <span class="label-text">Estimated (hours)</span>
+        </label>
+        <input id="estimatedTime" formControlName="estimatedTime" class="input input-bordered w-full" type="number"
+          min="1" max="9999" placeholder="Estimated Time (hours)" required />
+      </div>
+
+      <div class="form-control w-full">
+        <label for="taskValue" class="label px-0 py-1">
+          <span class="label-text">Task Value</span>
+        </label>
+        <input id="taskValue" formControlName="taskValue" class="input input-bordered w-full" type="number" min="1"
+          max="9999" placeholder="Task Value" required />
+      </div>
+    </div>
+
+    <div class="modal-action gap-2">
+      <form method="dialog">
+        <button class="btn">close</button>
+      </form>
+      <button type="submit" class="btn btn-primary">
+        Add
+      </button>
+    </div>
+  </form>
+  <form method="dialog" class="modal-backdrop">
+    <button>close</button>
+  </form>
+</dialog>
