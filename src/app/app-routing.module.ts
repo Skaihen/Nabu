@@ -20,7 +20,7 @@ export class TemplatePageTitleStrategy extends TitleStrategy {
   override updateTitle(routerState: RouterStateSnapshot) {
     const title = this.buildTitle(routerState)
     if (title !== undefined) {
-      this.title.setTitle(`Nabu - ${title}`)
+      this.title.setTitle(`${title} | Nabu`)
     }
   }
 }
