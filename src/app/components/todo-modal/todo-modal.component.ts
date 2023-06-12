@@ -11,7 +11,7 @@ export class TodoModalComponent {
   createTaskForm = this.formBuilder.group({
     newTaskText: '',
     estHours: 0,
-    estMinutes: 1,
+    estMinutes: 5,
     taskValue: 1
   })
 
