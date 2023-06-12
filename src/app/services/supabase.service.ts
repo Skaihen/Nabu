@@ -55,13 +55,19 @@ export class SupabaseService {
       .order('task_value', { ascending: false })
   }
 
-  addTodo(taskText: string, estimatedTime: number, taskValue: number) {
+  addTodo(
+    taskText: string,
+    estHours: number,
+    estMinutes: number,
+    taskValue: number
+  ) {
     return this.supabase
       .from('todos')
       .insert({
         user_id: this.session?.user.id,
         task: taskText,
-        estimated_time: estimatedTime,
+        est_hours: estHours,
+        est_minutes: estMinutes,
         task_value: taskValue
       })
       .select()

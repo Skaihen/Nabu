@@ -10,7 +10,8 @@ import { UtilsService } from 'src/app/services/utils.service'
 export class TodoModalComponent {
   createTaskForm = this.formBuilder.group({
     newTaskText: '',
-    estimatedTime: 1,
+    estHours: 0,
+    estMinutes: 1,
     taskValue: 1
   })
 
@@ -25,7 +26,8 @@ export class TodoModalComponent {
       this.utils.toggleLoading(true)
 
       const taskText = this.createTaskForm.value.newTaskText as string
-      const estimatedTime = this.createTaskForm.value.estimatedTime as number
+      const estHours = this.createTaskForm.value.estHours as number
+      const estMinutes = this.createTaskForm.value.estMinutes as number
       const taskValue = this.createTaskForm.value.taskValue as number
 
       let task = taskText.trim()
@@ -33,7 +35,8 @@ export class TodoModalComponent {
       if (task.length) {
         const { error } = await this.supabase.addTodo(
           task,
-          estimatedTime,
+          estHours,
+          estMinutes,
           taskValue
         )
 

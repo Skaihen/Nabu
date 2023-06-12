@@ -12,14 +12,22 @@
         placeholder="Make coffee" required />
     </div>
 
-    <div class="grid grid-cols-2 gap-4">
+    <div class="grid grid-flow-col gap-4">
 
       <div class="form-control w-full">
-        <label for="estimatedTime" class="label px-0 py-1">
+        <label for="estHours" class="label px-0 py-1">
           <span class="label-text">Estimated (hours)</span>
         </label>
-        <input id="estimatedTime" formControlName="estimatedTime" class="input input-bordered w-full" type="number"
-          min="1" max="9999" placeholder="Estimated Time (hours)" required />
+        <input id="estHours" formControlName="estHours" class="input input-bordered w-full" type="number" min="0"
+          max="9999" placeholder="Estimated Time (hours)" required />
+      </div>
+
+      <div class="form-control w-full">
+        <label for="estMinutes" class="label px-0 py-1">
+          <span class="label-text">Estimated (minutes)</span>
+        </label>
+        <input id="estMinutes" formControlName="estMinutes" class="input input-bordered w-full" type="number" min="0"
+          max="59" placeholder="Estimated Time (minutes)" required />
       </div>
 
       <div class="form-control w-full">
