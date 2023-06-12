@@ -8,8 +8,13 @@ module.exports = {
     themes: [
       "light",
       "dark",
+      "cupcake",
+      "bumblebee",
       "emerald",
-      "pastel",
+      "garden",
+      "wireframe",
+      "cmyk",
+      "lemonade",
       {
         customtheme: {
           primary: "#cbbef7",
