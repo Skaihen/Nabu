@@ -31,9 +31,10 @@ export class HomeComponent implements OnInit {
     await this.utils.fetchTodos()
   }
 
-  toggleShowOnlySelected(): void {
+  async toggleShowOnlySelected(): Promise<void> {
     this.utils.todoAppliedFilters.next({
       showOnlySelectedTodos: !this.showOnlySelected
     })
+    await this.utils.fetchTodos()
   }
 }
