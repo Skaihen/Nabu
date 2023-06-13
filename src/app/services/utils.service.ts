@@ -9,9 +9,9 @@ import { TodoInterface } from 'src/app/types/TodoInterface'
 export class UtilsService {
   loading = new BehaviorSubject<boolean>(false)
 
-  showOnlySelectedTodos = new BehaviorSubject<boolean>(false)
+  todoAppliedFilters = new BehaviorSubject<boolean>(false)
 
-  todosList = new BehaviorSubject<TodoInterface[]>([])
+  todoList = new BehaviorSubject<TodoInterface[]>([])
 
   todoErrorText = new BehaviorSubject<string>('')
 
@@ -36,9 +36,9 @@ export class UtilsService {
           }
         )
 
-        this.todosList.next(selectedTodos as TodoInterface[])
+        this.todoList.next(selectedTodos as TodoInterface[])
       } else {
-        this.todosList.next(data as TodoInterface[])
+        this.todoList.next(data as TodoInterface[])
       }
     } catch (error) {
       if (error instanceof Error) {

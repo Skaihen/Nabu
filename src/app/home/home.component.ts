@@ -9,7 +9,7 @@ import { TodoInterface } from 'src/app/types/TodoInterface'
 })
 export class HomeComponent implements OnInit {
   todoErrorText?: string
-  todosList?: TodoInterface[]
+  todoList?: TodoInterface[]
 
   session = this.supabase.session
 
@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
     this.utils.todoErrorText.subscribe(
       (todoErrorText) => (this.todoErrorText = todoErrorText)
     )
-    this.utils.todosList.subscribe((todosList) => (this.todosList = todosList))
+    this.utils.todoList.subscribe((todoList) => (this.todoList = todoList))
     await this.utils.fetchTodos(false)
   }
 }
