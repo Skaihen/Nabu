@@ -11,6 +11,8 @@ export class HomeComponent implements OnInit {
   todoErrorText?: string
   todoList?: TodoInterface[]
 
+  showOnlySelected = false
+
   session = this.supabase.session
 
   constructor(
@@ -22,6 +24,16 @@ export class HomeComponent implements OnInit {
       (todoErrorText) => (this.todoErrorText = todoErrorText)
     )
     this.utils.todoList.subscribe((todoList) => (this.todoList = todoList))
-    await this.utils.fetchTodos(false)
+    this.utils.todoAppliedFilters.subscribe(
+      (todoAppliedFilters) =>
+        (this.showOnlySelected = todoAppliedFilters.showOnlySelectedTodos)
+    )
+    await this.utils.fetchTodos()
+  }
+
+  toggleShowOnlySelected(): void {
+    this.utils.todoAppliedFilters.next({
+      showOnlySelectedTodos: !this.showOnlySelected
+    })
   }
 }

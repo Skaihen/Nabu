@@ -1,17 +1,39 @@
 <app-navbar />
 
-<div class="w-full flex flex-col justify-center items-center p-4 m-auto max-w-4xl">
-  <div class="w-full">
-    <div *ngIf="todoErrorText" class="rounded-md bg-red-100 p-4 my-2">
-      <div class="text-sm leading-5 text-red-700">{{todoErrorText}}</div>
+<div class="drawer md:drawer-open top-16">
+  <input id="filters-drawer" type="checkbox" class="drawer-toggle" />
+  <div class="drawer-content flex flex-col items-center justify-center">
+
+    <div class="w-full flex flex-col justify-center items-center p-4 m-auto ">
+      <div class="w-full">
+        <div *ngIf="todoErrorText" class="rounded-md bg-red-100 p-4 my-2">
+          <div class="text-sm leading-5 text-red-700">{{todoErrorText}}</div>
+        </div>
+
+        <ul class="w-full flex flex-col gap-3 mb-[4.5rem]">
+          <app-todo *ngFor="let todo of todoList" [todo]="todo" />
+        </ul>
+      </div>
     </div>
 
-    <ul class="w-full flex flex-col gap-3 mb-20">
-      <app-todo *ngFor="let todo of todoList" [todo]="todo" />
+    <button class="w-14 h-14 rounded-2xl btn btn-primary btn-square fixed right-4 bottom-4 shadow-lg"
+      onclick="addTodoModal.showModal()"><ion-icon name="add-outline" class="w-6 h-6"></ion-icon></button>
+    <app-todo-modal></app-todo-modal>
+  </div>
+
+  <div class="drawer-side fixed top-16 h-[calc(100vh_-_4rem)]">
+    <label for="filters-drawer" class="drawer-overlay"></label>
+    <ul class="menu menu-sm p-4 w-1/2 md:w-fit h-full bg-base-100 text-base-content border-r border-base-300">
+      <li [ngClass]="{ 'bg-secondary bg-opacity-30': showOnlySelected }"
+        class="hover:bg-secondary hover:bg-opacity-20 rounded-lg">
+        <div class="form-control items-center">
+          <label class="cursor-pointer flex label gap-3 justify-items-center">
+            <span class="label-text capitalize">Show Selected</span>
+            <input type="checkbox" [checked]="showOnlySelected" (change)="toggleShowOnlySelected()"
+              class="toggle toggle-success toggle-sm" checked />
+          </label>
+        </div>
+      </li>
     </ul>
   </div>
 </div>
-
-<button class="w-14 h-14 rounded-2xl btn btn-primary btn-square fixed right-4 bottom-4 shadow-lg"
-  onclick="addTodoModal.showModal()"><ion-icon name="add-outline" class="w-6 h-6"></ion-icon></button>
-<app-todo-modal></app-todo-modal>

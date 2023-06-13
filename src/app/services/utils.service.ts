@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core'
 import { BehaviorSubject } from 'rxjs'
 import { SupabaseService } from 'src/app/services/supabase.service'
 import { TodoInterface } from 'src/app/types/TodoInterface'
+import { TodosFilterInterface } from 'src/app/types/TodosFilterInterface'
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,9 @@ import { TodoInterface } from 'src/app/types/TodoInterface'
 export class UtilsService {
   loading = new BehaviorSubject<boolean>(false)
 
-  todoAppliedFilters = new BehaviorSubject<boolean>(false)
+  todoAppliedFilters = new BehaviorSubject<TodosFilterInterface>({
+    showOnlySelectedTodos: false
+  })
 
   todoList = new BehaviorSubject<TodoInterface[]>([])
 
@@ -21,7 +24,7 @@ export class UtilsService {
     this.loading.next(loading)
   }
 
-  async fetchTodos(onlySelected: boolean): Promise<void> {
+  async fetchTodos(): Promise<void> {
     try {
       this.toggleLoading(true)
 
@@ -29,7 +32,7 @@ export class UtilsService {
 
       if (error) throw error
 
-      if (onlySelected) {
+      if (this.todoAppliedFilters.getValue().showOnlySelectedTodos) {
         let selectedTodos = (data as TodoInterface[]).filter(
           (todo: TodoInterface) => {
             return todo.is_selected === true

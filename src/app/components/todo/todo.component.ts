@@ -42,7 +42,7 @@ export class TodoComponent implements OnInit {
 
       const { error } = await this.supabase.deleteTodo(this.todo.id)
       if (error) throw error
-      await this.utils.fetchTodos(false)
+      await this.utils.fetchTodos()
     } catch (error) {
       if (error instanceof Error) {
         console.log('error', error)
