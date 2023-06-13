@@ -41,7 +41,7 @@ export class TodoModalComponent {
         )
 
         if (error) throw error
-        this.utils.fetchTodos()
+        this.utils.fetchTodos(false)
       }
     } catch (error) {
       if (error instanceof Error) {

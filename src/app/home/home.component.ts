@@ -22,6 +22,6 @@ export class HomeComponent implements OnInit {
       (todoErrorText) => (this.todoErrorText = todoErrorText)
     )
     this.utils.todosList.subscribe((todosList) => (this.todosList = todosList))
-    await this.utils.fetchTodos()
+    await this.utils.fetchTodos(false)
   }
 }
