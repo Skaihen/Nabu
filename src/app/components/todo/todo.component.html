@@ -1,6 +1,6 @@
 <li class="join join-horizontal w-full grid grid-cols-[1fr_0fr] items-center border border-base-300 shadow">
 
-  <button (click)="toggleMarked()" [ngClass]="{'bg-primary bg-opacity-30': isMarked}"
+  <button (click)="toggleSelected()" [ngClass]="{'bg-primary bg-opacity-30': isSelected}"
     class="join-item p-3 grid grid-cols-[0.9fr_0.1fr] sm:grid-cols-[0.7fr_0.3fr] justify-between items-center gap-2 text-start hover:bg-primary hover:bg-opacity-20">
     <p class="truncate flex-shrink">{{todo.task}}</p>
 

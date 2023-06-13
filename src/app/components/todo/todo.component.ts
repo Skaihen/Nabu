@@ -9,22 +9,22 @@ import { TodoInterface } from 'src/app/types/TodoInterface'
 export class TodoComponent implements OnInit {
   @Input({ required: true }) todo!: TodoInterface
 
-  isMarked!: boolean
+  isSelected!: boolean
 
   constructor(private readonly supabase: SupabaseService) {}
 
   ngOnInit(): void {
-    this.isMarked = this.todo.is_marked
+    this.isSelected = this.todo.is_selected
   }
 
-  async toggleMarked(): Promise<void> {
+  async toggleSelected(): Promise<void> {
     try {
       const { data, error } = await this.supabase.toggleTodo(
         this.todo.id,
-        this.isMarked
+        this.isSelected
       )
       if (error) throw error
-      this.isMarked = data.is_marked
+      this.isSelected = data.is_selected
     } catch (error) {
       if (error instanceof Error) {
         console.log('error', error)

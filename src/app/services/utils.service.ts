@@ -9,7 +9,7 @@ import { TodoInterface } from 'src/app/types/TodoInterface'
 export class UtilsService {
   loading = new BehaviorSubject<boolean>(false)
 
-  showOnlyMarkedTodos = new BehaviorSubject<boolean>(false)
+  showOnlySelectedTodos = new BehaviorSubject<boolean>(false)
 
   todosList = new BehaviorSubject<TodoInterface[]>([])
 
@@ -21,7 +21,7 @@ export class UtilsService {
     this.loading.next(loading)
   }
 
-  async fetchTodos(onlyMarked: boolean): Promise<void> {
+  async fetchTodos(onlySelected: boolean): Promise<void> {
     try {
       this.toggleLoading(true)
 
@@ -29,14 +29,14 @@ export class UtilsService {
 
       if (error) throw error
 
-      if (onlyMarked) {
-        let markedTodos = (data as TodoInterface[]).filter(
+      if (onlySelected) {
+        let selectedTodos = (data as TodoInterface[]).filter(
           (todo: TodoInterface) => {
-            return todo.is_marked === true
+            return todo.is_selected === true
           }
         )
 
-        this.todosList.next(markedTodos as TodoInterface[])
+        this.todosList.next(selectedTodos as TodoInterface[])
       } else {
         this.todosList.next(data as TodoInterface[])
       }
