@@ -84,6 +84,6 @@ export class SupabaseService {
   }
 
   deleteTodo(id: number) {
-    this.supabase.from('todos').delete().eq('id', id)
+    return this.supabase.from('todos').delete().eq('id', id)
   }
 }

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core'
 import { SupabaseService } from 'src/app/services/supabase.service'
+import { UtilsService } from 'src/app/services/utils.service'
 import { TodoInterface } from 'src/app/types/TodoInterface'
 
 @Component({
@@ -11,7 +12,10 @@ export class TodoComponent implements OnInit {
 
   isSelected!: boolean
 
-  constructor(private readonly supabase: SupabaseService) {}
+  constructor(
+    private readonly supabase: SupabaseService,
+    private readonly utils: UtilsService
+  ) {}
 
   ngOnInit(): void {
     this.isSelected = this.todo.is_selected
@@ -29,6 +33,22 @@ export class TodoComponent implements OnInit {
       if (error instanceof Error) {
         console.log('error', error)
       }
+    }
+  }
+
+  async deleteTodo(): Promise<void> {
+    try {
+      this.utils.toggleLoading(true)
+
+      const { error } = await this.supabase.deleteTodo(this.todo.id)
+      if (error) throw error
+      await this.utils.fetchTodos(false)
+    } catch (error) {
+      if (error instanceof Error) {
+        console.log('error', error)
+      }
+    } finally {
+      this.utils.toggleLoading(false)
     }
   }
 }

@@ -52,19 +52,4 @@ export class TodoModalComponent {
       this.utils.toggleLoading(false)
     }
   }
-
-  /*   async deleteTodo(): Promise<void> {
-    try {
-      this.utils.toggleLoading(true)
-
-      await this.supabase.deleteTodo(this.todo.id)
-      this.todos = this.todos.filter((x: any) => x.id != id)
-    } catch (error) {
-      if (error instanceof Error) {
-        this.todoErrorText = error.message
-      }
-    } finally {
-      this.utils.toggleLoading(false)
-    }
-  } */
 }

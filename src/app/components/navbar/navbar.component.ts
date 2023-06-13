@@ -9,7 +9,7 @@ import { SupabaseService } from 'src/app/services/supabase.service'
 export class NavbarComponent {
   constructor(
     private readonly supabase: SupabaseService,
-    private router: Router
+    private readonly router: Router
   ) {}
 
   async signOut(): Promise<void> {
