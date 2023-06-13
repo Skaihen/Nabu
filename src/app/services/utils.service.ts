@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core'
 import { BehaviorSubject } from 'rxjs'
 import { SupabaseService } from 'src/app/services/supabase.service'
 import { TodoInterface } from 'src/app/types/TodoInterface'
+import { TodosFilterInterface } from 'src/app/types/TodosFilterInterface'
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,11 @@ import { TodoInterface } from 'src/app/types/TodoInterface'
 export class UtilsService {
   loading = new BehaviorSubject<boolean>(false)
 
-  todosList = new BehaviorSubject<TodoInterface[]>([])
+  todoAppliedFilters = new BehaviorSubject<TodosFilterInterface>({
+    showOnlySelectedTodos: false
+  })
+
+  todoList = new BehaviorSubject<TodoInterface[]>([])
 
   todoErrorText = new BehaviorSubject<string>('')
 
@@ -27,7 +32,17 @@ export class UtilsService {
 
       if (error) throw error
 
-      this.todosList.next(data as TodoInterface[])
+      if (this.todoAppliedFilters.getValue().showOnlySelectedTodos) {
+        let selectedTodos = (data as TodoInterface[]).filter(
+          (todo: TodoInterface) => {
+            return todo.is_selected === true
+          }
+        )
+
+        this.todoList.next(selectedTodos as TodoInterface[])
+      } else {
+        this.todoList.next(data as TodoInterface[])
+      }
     } catch (error) {
       if (error instanceof Error) {
         this.todoErrorText.next(error.message)

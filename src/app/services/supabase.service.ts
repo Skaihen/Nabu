@@ -74,16 +74,16 @@ export class SupabaseService {
       .single()
   }
 
-  toggleTodo(todoId: number, isCompleted: boolean) {
+  toggleTodo(todoId: number, isSelected: boolean) {
     return this.supabase
       .from('todos')
-      .update({ is_complete: !isCompleted })
+      .update({ is_selected: !isSelected })
       .eq('id', todoId)
-      .select('is_complete')
+      .select('is_selected')
       .single()
   }
 
   deleteTodo(id: number) {
-    this.supabase.from('todos').delete().eq('id', id)
+    return this.supabase.from('todos').delete().eq('id', id)
   }
 }

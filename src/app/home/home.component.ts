@@ -9,7 +9,9 @@ import { TodoInterface } from 'src/app/types/TodoInterface'
 })
 export class HomeComponent implements OnInit {
   todoErrorText?: string
-  todosList?: TodoInterface[]
+  todoList?: TodoInterface[]
+
+  showOnlySelected = false
 
   session = this.supabase.session
 
@@ -21,7 +23,18 @@ export class HomeComponent implements OnInit {
     this.utils.todoErrorText.subscribe(
       (todoErrorText) => (this.todoErrorText = todoErrorText)
     )
-    this.utils.todosList.subscribe((todosList) => (this.todosList = todosList))
+    this.utils.todoList.subscribe((todoList) => (this.todoList = todoList))
+    this.utils.todoAppliedFilters.subscribe(
+      (todoAppliedFilters) =>
+        (this.showOnlySelected = todoAppliedFilters.showOnlySelectedTodos)
+    )
+    await this.utils.fetchTodos()
+  }
+
+  async toggleShowOnlySelected(): Promise<void> {
+    this.utils.todoAppliedFilters.next({
+      showOnlySelectedTodos: !this.showOnlySelected
+    })
     await this.utils.fetchTodos()
   }
 }
