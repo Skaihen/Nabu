@@ -2,9 +2,9 @@
 
 <div class="drawer md:drawer-open top-16">
   <input id="filters-drawer" type="checkbox" class="drawer-toggle" />
-  <div class="drawer-content flex flex-col items-center justify-center">
+  <div class="drawer-content flex flex-col items-center justify-start">
 
-    <div class="w-full flex flex-col justify-center items-center p-4 m-auto ">
+    <div class="w-full flex flex-col justify-center items-center p-4 mx-auto ">
       <div class="w-full">
         <div *ngIf="todoErrorText" class="rounded-md bg-red-100 p-4 my-2">
           <div class="text-sm leading-5 text-red-700">{{todoErrorText}}</div>
@@ -30,7 +30,7 @@
           <label class="cursor-pointer flex label gap-3 justify-items-center">
             <span class="label-text capitalize">Show Selected</span>
             <input type="checkbox" [checked]="showOnlySelected" (change)="toggleShowOnlySelected()"
-              class="toggle toggle-success toggle-sm" checked />
+              class="toggle toggle-secondary toggle-sm" checked />
           </label>
         </div>
       </li>
